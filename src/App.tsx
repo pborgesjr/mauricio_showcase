@@ -1,7 +1,9 @@
+import { Typography } from "./components";
+
 function App() {
   return (
     <main>
-      <h1>oi123</h1>
+      <Typography text="Pedro Borges" type="body" />
     </main>
   );
 }
