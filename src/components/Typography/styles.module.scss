@@ -1,11 +1,20 @@
+.container {
+    width: fit-content;
+}
+
 .text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    color: rgba(14, 14, 15);
+}
 
-    &.body {
-    }
+.body {
+    font-size: 1.25rem;
+}
 
-    &.title {
+.title {
+    font-weight: bold;
+    font-size: 1.75rem;
+}
 
-    }
+.vertical {
+    transform: rotate(-90deg);
 }
