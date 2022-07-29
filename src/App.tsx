@@ -1,9 +1,9 @@
-import { Typography } from "./components";
+import { Router } from "./routes";
 
 function App() {
   return (
     <main>
-      <Typography text="Pedro Borges" type="body" />
+      <Router />
     </main>
   );
 }
