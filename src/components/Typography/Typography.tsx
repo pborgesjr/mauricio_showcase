@@ -7,6 +7,7 @@ interface TypographyProps {
   type: "title" | "body";
   verticalOrientation?: boolean;
   customStyles?: string;
+  customContainerStyles?: string;
 }
 
 export const Typography = ({
@@ -14,12 +15,13 @@ export const Typography = ({
   type,
   verticalOrientation,
   customStyles,
+  customContainerStyles,
 }: TypographyProps) => {
   return (
     <div
       className={`${styles.container} ${
         verticalOrientation && styles.vertical
-      }`}
+      } ${customContainerStyles}`}
     >
       <span className={`${styles.text} ${styles[type]} ${customStyles}`}>
         {text}
