@@ -26,11 +26,16 @@ export const LinkAggregator = ({
     <div className={styles.container}>
       {paths.map((path) => (
         <button
+          key={path}
           onClick={() => handleSetActiveItem(path)}
           className={styles.button}
         >
           <span className={`${styles.text}`}>{path}</span>
-          <div className={`${activeItem === path && styles.active}`} />
+          <div
+            className={`${
+              activeItem === path && shouldUnderline && styles.active
+            }`}
+          />
         </button>
       ))}
     </div>
