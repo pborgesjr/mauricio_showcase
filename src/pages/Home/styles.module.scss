@@ -1,0 +1,119 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 25rem;
+    width: 100%;
+    max-width: 70rem;
+
+    img {
+        max-width: 6rem;
+    }
+}
+
+.bigImages {
+    width: 100%;
+    position: relative;
+    bottom: -8rem;
+
+.by {
+    position: absolute;
+    top: 15rem;
+}
+
+.byText {
+    font-size: 0.8rem;
+}
+
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17rem 0;
+    background-color: white;
+    width: 100%;
+
+    span {
+        color: black;
+    }
+    
+    img {
+        max-height: 22rem;
+
+    }
+}
+
+.slider {
+padding: 1.2rem 0;
+
+    .slideWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s;
+        padding: 0 0.5rem;
+
+        &:hover {
+            //cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        span {
+            position: relative;
+            bottom: 5rem;
+            color: white;
+            text-transform: uppercase;
+            font-size: 1vw;
+            letter-spacing: 0.15rem;
+        }
+    }
+    img {
+        height: 350px;
+        width: 100%;
+        object-fit: cover;
+        filter:brightness(30%);
+
+        &:hover {
+                filter:brightness(60%)
+        }
+
+    }
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .video {
+        position: relative;
+        top: -8rem;
+        width: 1300px;
+        max-width: 70rem;
+    }
+
+    .logo {
+        max-width: 6rem;
+    }
+
+    .playerWrapper {
+         position: relative; 
+         top: -8rem; 
+         padding-top: 10%
+    }
+
+    .reactPlayer {
+        position: absolute;
+        top: 0;
+        left: 0; 
+    }
+
+}

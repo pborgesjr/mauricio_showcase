@@ -7,7 +7,7 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         {routes.map((route) => (
-          <Route path={route.path} element={route.component} />
+          <Route key={route.name} path={route.path} element={route.component} />
         ))}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
