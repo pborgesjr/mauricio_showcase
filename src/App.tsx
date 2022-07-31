@@ -1,7 +1,9 @@
+import { Router } from "./routes";
+
 function App() {
   return (
     <main>
-      <h1>oi123</h1>
+      <Router />
     </main>
   );
 }

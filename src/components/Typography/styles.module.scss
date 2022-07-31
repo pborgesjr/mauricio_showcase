@@ -1,0 +1,23 @@
+@use '../../styles/colors.module.scss' as colors;
+
+.container {
+    width: fit-content;
+}
+
+.text {
+    color: colors.$white100;
+    white-space: pre-line;
+}
+
+.body {
+    font-size: 1.25rem;
+}
+
+.title {
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.vertical {
+    transform: rotate(-90deg);
+}
