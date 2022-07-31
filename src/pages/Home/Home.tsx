@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   app_logo,
   area_gourmet,
-  bedroom,
   big_image,
   fachada_casa,
-  fake_player,
   mauricio_face,
 } from "../../assets";
 import { LinkAggregator, Typography } from "../../components";
 import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 import styles from "./styles.module.scss";
 import ReactPlayer from "react-player";
@@ -19,20 +18,41 @@ const MOCK_BIO_TEXT =
   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.\n\n Ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.";
 
 export const Home = () => {
+  const homeRef = useRef<HTMLDivElement | undefined>(undefined);
+  const bioRef = useRef<HTMLDivElement | undefined>(undefined);
+  const projectsRef = useRef<HTMLDivElement | undefined>(undefined);
+  //const contactRef = useRef<HTMLDivElement | undefined>(undefined);
+
   return (
     <div className={styles.main}>
-      <div className={styles.header}>
+      <div className={styles.header} ref={homeRef}>
         <img src={app_logo} />
         <LinkAggregator
-          shouldUnderline
-          paths={["home", "sobre", "projetos", "contato"]}
+          links={[
+            {
+              path: "home",
+              ref: homeRef,
+            },
+            {
+              path: "sobre",
+              ref: bioRef,
+            },
+            {
+              path: "projetos",
+              ref: projectsRef,
+            },
+            {
+              path: "contato",
+              ref: undefined,
+            },
+          ]}
         />
       </div>
 
-      <div className={styles.bigImages}>
+      <div className={styles.imageSlideShow}>
         <Typography
-          customContainerStyles={styles.by}
-          customStyles={styles.byText}
+          customContainerStyles={styles.brand}
+          customStyles={styles.brandText}
           text="maarchviz.com ●  by mauricio alves"
           type="body"
           verticalOrientation
@@ -77,79 +97,73 @@ export const Home = () => {
         </Slide>
       </div>
 
-      <div className={styles.bio}>
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "70rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
+      <div className={styles.bio} ref={bioRef}>
+        <div className={styles.bioWrapper}>
+          <div className={styles.textWrapper}>
             <div>
               <Typography type="title" text="Mauricio Alves" />
               <Typography type="title" text="Archviz ______" />
             </div>
-            <Typography
-              type="body"
-              customStyles={styles.bioText}
-              text={MOCK_BIO_TEXT}
-            />
+            <Typography type="body" text={MOCK_BIO_TEXT} />
           </div>
 
           <img src={mauricio_face} alt="imagem do maurício" />
         </div>
-        <div
-          style={{
-            width: "100%",
-            marginTop: "5rem",
-          }}
-        >
+        <div ref={projectsRef} className={styles.projects}>
           <Slide
             slidesToScroll={1}
             slidesToShow={6}
             autoplay={false}
-            cssClass={styles.slider}
+            cssClass={styles.slidesWrapper}
             easing="ease"
+            prevArrow={
+              <FaChevronLeft
+                color="#adadad"
+                size={30}
+                className={styles.leftArrow}
+              />
+            }
+            nextArrow={
+              <FaChevronRight
+                color="#adadad"
+                size={30}
+                className={styles.rightArrow}
+              />
+            }
           >
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Sala de estar" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={area_gourmet} />
               <Typography type="body" text="Quarto" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Fachada" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Área Gourmet" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Banheiro" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Área de Lazer" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Churrasqueira" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Sala de Jantar" />
             </div>
-            <div className={styles.slideWrapper}>
+            <div className={styles.slide}>
               <img src={fachada_casa} />
               <Typography type="body" text="Escritório" />
             </div>
@@ -157,23 +171,47 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className={styles.bottom}>
-        <div style={{ position: "relative", top: "-8rem" }}>
+      <div className={styles.videoShow}>
+        <div className={styles.video}>
           <ReactPlayer
             url={
-              "https://www.youtube.com/watch?v=Bp0NLbQvH4o&ab_channel=FinnHua"
+              "https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
             }
             config={{
               youtube: {
                 playerVars: { showinfo: 1 },
               },
             }}
-            height={720}
+            height={630}
             width={"70rem"}
+            muted
+            volume={0}
+            loop={true}
+            playing
           />
         </div>
         <img src={app_logo} className={styles.logo} />
-        <LinkAggregator paths={["home", "sobre", "projetos", "contato"]} />
+
+        <LinkAggregator
+          links={[
+            {
+              path: "home",
+              ref: homeRef,
+            },
+            {
+              path: "sobre",
+              ref: bioRef,
+            },
+            {
+              path: "projetos",
+              ref: projectsRef,
+            },
+            {
+              path: "contato",
+              ref: undefined,
+            },
+          ]}
+        />
       </div>
     </div>
   );

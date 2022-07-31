@@ -17,17 +17,17 @@
     }
 }
 
-.bigImages {
+.imageSlideShow {
     width: 100%;
     position: relative;
     bottom: -8rem;
 
-.by {
+.brand {
     position: absolute;
     top: 15rem;
 }
 
-.byText {
+.brandText {
     font-size: 0.8rem;
 }
 
@@ -41,6 +41,17 @@
     background-color: white;
     width: 100%;
 
+    .bioWrapper {
+        display: flex;
+        max-width: 70rem;
+
+        .textWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
     span {
         color: black;
     }
@@ -49,12 +60,25 @@
         max-height: 22rem;
 
     }
+
+    .projects {
+        width: 100%;
+        margin-top: 5rem;
+    }
 }
 
-.slider {
+.slidesWrapper {
 padding: 1.2rem 0;
 
-    .slideWrapper {
+    .leftArrow {
+        margin-left: 10px
+    }
+
+    .rightArrow {
+        margin-right: 10px
+    }
+
+    .slide {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -81,14 +105,10 @@ padding: 1.2rem 0;
         object-fit: cover;
         filter:brightness(30%);
 
-        &:hover {
-                filter:brightness(60%)
-        }
-
     }
 }
 
-.bottom {
+.videoShow {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,24 +116,10 @@ padding: 1.2rem 0;
     .video {
         position: relative;
         top: -8rem;
-        width: 1300px;
-        max-width: 70rem;
     }
 
     .logo {
         max-width: 6rem;
-    }
-
-    .playerWrapper {
-         position: relative; 
-         top: -8rem; 
-         padding-top: 10%
-    }
-
-    .reactPlayer {
-        position: absolute;
-        top: 0;
-        left: 0; 
     }
 
 }
