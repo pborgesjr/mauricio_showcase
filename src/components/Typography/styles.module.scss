@@ -1,9 +1,11 @@
+@use '../../styles/colors.module.scss' as colors;
+
 .container {
     width: fit-content;
 }
 
 .text {
-    color: white;
+    color: colors.$white100;
     white-space: pre-line;
 }
 

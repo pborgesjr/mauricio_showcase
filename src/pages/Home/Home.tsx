@@ -8,6 +8,7 @@ import {
 } from "../../assets";
 import { LinkAggregator, Typography } from "../../components";
 import { Slide } from "react-slideshow-image";
+import colors from "../../styles/_colors.module.scss";
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
@@ -116,18 +117,12 @@ export const Home = () => {
             autoplay={false}
             cssClass={styles.slidesWrapper}
             easing="ease"
-            prevArrow={
-              <FaChevronLeft
-                color="#adadad"
-                size={30}
-                className={styles.leftArrow}
-              />
-            }
+            prevArrow={<FaChevronLeft size={30} className={styles.leftArrow} />}
             nextArrow={
               <FaChevronRight
-                color="#adadad"
                 size={30}
                 className={styles.rightArrow}
+                color={colors.red}
               />
             }
           >

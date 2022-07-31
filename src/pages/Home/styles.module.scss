@@ -1,3 +1,5 @@
+@use '../../styles/_colors.module.scss' as colors;
+
 .main {
     display: flex;
     flex-direction: column;
@@ -38,7 +40,7 @@
     flex-direction: column;
     align-items: center;
     padding: 17rem 0;
-    background-color: white;
+    background-color: colors.$white100;
     width: 100%;
 
     .bioWrapper {
@@ -53,7 +55,7 @@
     }
 
     span {
-        color: black;
+        color: colors.$black100;
     }
     
     img {
@@ -93,7 +95,7 @@ padding: 1.2rem 0;
         span {
             position: relative;
             bottom: 5rem;
-            color: white;
+            color: colors.$white100;
             text-transform: uppercase;
             font-size: 1vw;
             letter-spacing: 0.15rem;

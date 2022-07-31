@@ -1,3 +1,5 @@
+@use '../../styles/_colors.module.scss' as colors;
+
 .container {
     display: flex;
 
@@ -11,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     border: none;
-    background-color: transparent;
+    background-color: colors.$transparent;
     text-decoration: none;
     transition: transform 0.3s;
     
@@ -22,7 +24,7 @@
 }
 
 .text {
-    color: white;
+    color: colors.$white100;
     text-transform: uppercase;
     font-size: 0.8rem;
     
@@ -31,5 +33,5 @@
 .active {
     margin-top: 0.5rem;
     width: 1.5rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid colors.$white100;
 }
