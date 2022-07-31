@@ -1,39 +1,43 @@
-import React, { useState } from "react";
+import React, { MutableRefObject, useState } from "react";
 
 import styles from "./styles.module.scss";
 
 interface LinkAggregatorProps {
-  paths: string[];
+  links: Array<LinkType>;
   shouldUnderline?: boolean;
 }
 
+interface LinkType {
+  path: string;
+  ref?: MutableRefObject<HTMLDivElement | undefined>;
+}
+
 export const LinkAggregator = ({
-  paths,
+  links,
   shouldUnderline,
 }: LinkAggregatorProps) => {
   const [activeItem, setActiveItem] = useState("home");
 
-  const handleSetActiveItem = (selectedItem: string) => {
+  const handleSetActiveItem = ({ path, ref }: LinkType) => {
     if (shouldUnderline) {
-      setActiveItem(selectedItem);
+      setActiveItem(path);
     }
 
-    //scrollToPosition
-    //console.log(activeItem === selectedItem);
+    ref?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className={styles.container}>
-      {paths.map((path) => (
+      {links.map((link, index) => (
         <button
-          key={path}
-          onClick={() => handleSetActiveItem(path)}
+          key={index}
+          onClick={() => handleSetActiveItem(link)}
           className={styles.button}
         >
-          <span className={`${styles.text}`}>{path}</span>
+          <span className={`${styles.text}`}>{link.path}</span>
           <div
             className={`${
-              activeItem === path && shouldUnderline && styles.active
+              activeItem === link.path && shouldUnderline && styles.active
             }`}
           />
         </button>
