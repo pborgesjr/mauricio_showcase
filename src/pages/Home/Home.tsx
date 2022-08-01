@@ -1,4 +1,8 @@
 import React, { useRef } from "react";
+import ReactPlayer from "react-player";
+import { Slide } from "react-slideshow-image";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+
 import {
   app_logo,
   area_gourmet,
@@ -7,22 +11,18 @@ import {
   mauricio_face,
 } from "../../assets";
 import { LinkAggregator, Typography } from "../../components";
-import { Slide } from "react-slideshow-image";
+import { getLocale } from "../../locale";
 import colors from "../../styles/_colors.module.scss";
 
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-
 import styles from "./styles.module.scss";
-import ReactPlayer from "react-player";
-
-const MOCK_BIO_TEXT =
-  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.\n\n Ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.";
 
 export const Home = () => {
   const homeRef = useRef<HTMLDivElement | undefined>(undefined);
   const bioRef = useRef<HTMLDivElement | undefined>(undefined);
   const projectsRef = useRef<HTMLDivElement | undefined>(undefined);
   //const contactRef = useRef<HTMLDivElement | undefined>(undefined);
+
+  const { brand, routes } = getLocale();
 
   return (
     <div className={styles.main}>
@@ -31,19 +31,19 @@ export const Home = () => {
         <LinkAggregator
           links={[
             {
-              path: "home",
+              path: routes.home,
               ref: homeRef,
             },
             {
-              path: "sobre",
+              path: routes.about,
               ref: bioRef,
             },
             {
-              path: "projetos",
+              path: routes.projects,
               ref: projectsRef,
             },
             {
-              path: "contato",
+              path: routes.contact,
               ref: undefined,
             },
           ]}
@@ -54,7 +54,7 @@ export const Home = () => {
         <Typography
           customContainerStyles={styles.brand}
           customStyles={styles.brandText}
-          text="maarchviz.com ●  by mauricio alves"
+          text={brand.url}
           type="body"
           verticalOrientation
         />
@@ -102,10 +102,10 @@ export const Home = () => {
         <div className={styles.bioWrapper}>
           <div className={styles.textWrapper}>
             <div>
-              <Typography type="title" text="Mauricio Alves" />
-              <Typography type="title" text="Archviz ______" />
+              <Typography type="title" text={brand.name} />
+              <Typography type="title" text={`${brand.brand} ______`} />
             </div>
-            <Typography type="body" text={MOCK_BIO_TEXT} />
+            <Typography type="body" text={brand.description} />
           </div>
 
           <img src={mauricio_face} alt="imagem do maurício" />
@@ -190,19 +190,19 @@ export const Home = () => {
         <LinkAggregator
           links={[
             {
-              path: "home",
+              path: routes.home,
               ref: homeRef,
             },
             {
-              path: "sobre",
+              path: routes.about,
               ref: bioRef,
             },
             {
-              path: "projetos",
+              path: routes.projects,
               ref: projectsRef,
             },
             {
-              path: "contato",
+              path: routes.contact,
               ref: undefined,
             },
           ]}
