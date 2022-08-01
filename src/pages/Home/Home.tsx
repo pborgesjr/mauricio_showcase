@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Slide } from "react-slideshow-image";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { listAll, ref, getDownloadURL } from "firebase/storage";
 
 import {
   app_logo,
   area_gourmet,
-  big_image,
   fachada_casa,
   mauricio_face,
 } from "../../assets";
@@ -15,14 +15,43 @@ import { getLocale } from "../../locale";
 import colors from "../../styles/_colors.module.scss";
 
 import styles from "./styles.module.scss";
+import { storage } from "../../firebase";
 
 export const Home = () => {
+  const imageListInitialState = () => [];
+
+  const [imageList, setImageList] = useState<
+    { name: string; url: string; isLoaded: boolean }[]
+  >(imageListInitialState);
+
+  //TODO: create global const to storage image path
+  const imageListRef = ref(storage, "images/showoff");
+
   const homeRef = useRef<HTMLDivElement | undefined>(undefined);
   const bioRef = useRef<HTMLDivElement | undefined>(undefined);
   const projectsRef = useRef<HTMLDivElement | undefined>(undefined);
   //const contactRef = useRef<HTMLDivElement | undefined>(undefined);
 
   const { brand, routes } = getLocale();
+
+  const fetchAllImages = async () => {
+    const { items } = await listAll(imageListRef);
+
+    if (items) {
+      items.forEach((item) => {
+        getDownloadURL(item).then((url) =>
+          setImageList((prevState) => [
+            ...prevState,
+            { name: item.name, url, isLoaded: false },
+          ])
+        );
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchAllImages();
+  }, []);
 
   return (
     <div className={styles.main}>
@@ -59,43 +88,22 @@ export const Home = () => {
           verticalOrientation
         />
 
-        <Slide
-          slidesToScroll={1}
-          slidesToShow={1}
-          arrows={false}
-          canSwipe={false}
-          transitionDuration={9000}
-          easing="cubic"
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
+        {imageList.length > 0 && (
+          <Slide
+            slidesToScroll={1}
+            slidesToShow={1}
+            arrows={false}
+            canSwipe={false}
+            transitionDuration={9000}
+            easing="cubic"
           >
-            <img
-              src={big_image}
-              style={{
-                width: "100%",
-                maxWidth: "70rem",
-              }}
-            />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={big_image}
-              style={{
-                width: "100%",
-                maxWidth: "70rem",
-              }}
-            />
-          </div>
-        </Slide>
+            {imageList.map((image) => (
+              <div className={styles.imageWrapper}>
+                <img src={image.url} className={styles.image} />
+              </div>
+            ))}
+          </Slide>
+        )}
       </div>
 
       <div className={styles.bio} ref={bioRef}>
@@ -182,7 +190,7 @@ export const Home = () => {
             muted
             volume={0}
             loop={true}
-            playing
+            //playing
           />
         </div>
         <img src={app_logo} className={styles.logo} />
