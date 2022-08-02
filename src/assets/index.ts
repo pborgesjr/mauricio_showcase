@@ -1,5 +1,5 @@
 import app_logo from './images/app_logo.png';
-import big_image from './images/bigImage.jpg';
+import big_image from './images/big_image.jpg';
 import mauricio_face from './images/profile.jpg';
 import bedroom from './images/bedroom.jpg';
 import fake_player from './images/fake_player.jpg';
