@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useState } from "react";
+import React, { RefObject, useState } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -9,7 +9,7 @@ interface LinkAggregatorProps {
 
 interface LinkType {
   path: string;
-  ref?: MutableRefObject<HTMLDivElement | undefined>;
+  ref?: RefObject<HTMLDivElement>;
 }
 
 export const LinkAggregator = ({

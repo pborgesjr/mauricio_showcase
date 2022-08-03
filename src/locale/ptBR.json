@@ -12,13 +12,13 @@
         "contact": "contato"
     },
     "imageCategory": {
-        "toilet": "Lavabo",
         "bathroom": "Banheiro",
         "bedroom": "Quarto",
+        "dining-room": "Sala de Jantar",
+        "house": "Casa",
+        "living-room": "Sala de Estar",
         "office": "Escritório",
-        "gourmet": "Área Gourmet",
-        "diningRoom": "Sala de Jantar",
-        "livingRoom": "Sala de Estar",
-        "facade": "Fachada"
+        "playground": "Área de Lazer",
+        "toilet": "Lavabo"
     }
 }
