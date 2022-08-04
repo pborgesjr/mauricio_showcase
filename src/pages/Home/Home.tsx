@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Carousel from "react-elastic-carousel";
 
-import { app_logo } from "../../assets";
+import { app_logo, big_image } from "../../assets";
 import {
   LinkAggregator,
   ResponsiveVideoPlayer,
   Typography,
+  FloatingImage,
 } from "../../components";
 import { getLocale } from "../../locale";
 
@@ -22,6 +23,8 @@ export const Home = () => {
   const bioRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+
+  const floatingImageRef = useRef(null);
 
   const HEADER_FOOTER_LINKS = [
     {
@@ -140,6 +143,10 @@ export const Home = () => {
           </a>
         </div>
       </div>
+      <button onClick={() => floatingImageRef.current.openModal()}>
+        teste
+      </button>
+      <FloatingImage path={big_image} ref={floatingImageRef} />
     </div>
   );
 };
