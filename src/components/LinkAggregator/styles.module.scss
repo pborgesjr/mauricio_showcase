@@ -1,37 +1,33 @@
-@use '../../styles/_colors.module.scss' as colors;
+@use "../../styles/_colors.module.scss" as colors;
 
 .container {
-    display: flex;
-
-    button:not(:first-child) {
-        margin-left: 2.5rem;
-    }
+  display: flex;
+  gap: 2rem;
 }
 
 .button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    background-color: colors.$transparent;
-    text-decoration: none;
-    transition: transform 0.3s;
-    
-    &:hover {
-       transform: scale(1.2);
-       cursor: pointer;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  background-color: colors.$transparent;
+  text-decoration: none;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 }
 
 .text {
-    color: colors.$white100;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    
+  color: colors.$white100;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .active {
-    margin-top: 0.5rem;
-    width: 1.5rem;
-    border-bottom: 1px solid colors.$white100;
+  margin-top: 0.5rem;
+  width: 1.5rem;
+  border-bottom: 1px solid colors.$white100;
 }

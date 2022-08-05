@@ -6,23 +6,6 @@ $MAX_WIDTH: 70rem;
   padding-bottom: 3rem;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-
-  > div {
-    display: flex;
-    align-items: center;
-    gap: 15rem;
-    width: 100%;
-    max-width: $MAX_WIDTH;
-  }
-
-  img {
-    max-width: 6rem;
-  }
-}
-
 .imageSlideShow {
   position: relative;
   bottom: -8rem;
@@ -37,11 +20,20 @@ $MAX_WIDTH: 70rem;
     font-size: 0.8rem;
   }
 
+  @media screen and (max-width: 800px) {
+    bottom: 0;
+  }
+
   .imageWrapper {
     max-width: $MAX_WIDTH;
     margin: 0 0.5rem;
 
+    @media screen and (max-width: 800px) {
+      margin: 0;
+    }
+
     .image {
+      display: block;
       width: 100%;
       height: auto;
       object-fit: cover;
@@ -55,16 +47,17 @@ $MAX_WIDTH: 70rem;
   align-items: center;
   padding: 17rem 0 6rem 0;
   background-color: colors.$white100;
-  width: 100%;
+
+  @media screen and (max-width: 800px) {
+    padding: 5rem 0;
+  }
 
   .bioWrapper {
-    max-width: 70rem;
-    margin-bottom: 5rem;
+    display: flex;
+    max-width: $MAX_WIDTH;
 
-    .textWrapper {
-      .descriptionContainer {
-        margin-top: 30px;
-      }
+    .descriptionContainer {
+      margin-top: 30px;
     }
   }
 
@@ -98,6 +91,24 @@ $MAX_WIDTH: 70rem;
 .videoGrid {
   display: grid;
   grid-template-columns: 20% 60% 20%;
+
+  @media screen {
+    @media (min-width: 2800px) {
+      grid-template-columns: 30% 40% 30%;
+    }
+
+    @media (max-width: 1800px) {
+      grid-template-columns: 10% 80% 10%;
+    }
+
+    @media (max-width: 1300px) {
+      grid-template-columns: 5% 90% 5%;
+    }
+
+    @media (max-width: 1000px) {
+      display: block;
+    }
+  }
 }
 
 .footer {
@@ -106,7 +117,7 @@ $MAX_WIDTH: 70rem;
   align-items: center;
 
   img {
-    max-width: 6rem;
+    width: 10rem;
   }
 
   .contactIcon {

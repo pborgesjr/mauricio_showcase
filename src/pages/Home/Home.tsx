@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Carousel from "react-elastic-carousel";
 
-import { app_logo, big_image } from "../../assets";
+import { app_logo, mauricio_face } from "../../assets";
 import {
   LinkAggregator,
   ResponsiveVideoPlayer,
   Typography,
-  FloatingImage,
+  Header,
 } from "../../components";
 import { getLocale } from "../../locale";
 
@@ -50,11 +50,8 @@ export const Home = () => {
 
   return (
     <div className={styles.main}>
-      <div ref={homeRef} className={styles.header}>
-        <div>
-          <img src={app_logo} />
-          <LinkAggregator links={HEADER_FOOTER_LINKS} />
-        </div>
+      <div ref={homeRef}>
+        <Header links={HEADER_FOOTER_LINKS} />
       </div>
 
       <div className={styles.imageSlideShow}>
@@ -85,10 +82,8 @@ export const Home = () => {
       <div className={styles.bio} ref={bioRef}>
         <div className={styles.bioWrapper}>
           <div className={styles.textWrapper}>
-            <>
-              <Typography type="title" text={brand.name} />
-              <Typography type="title" text={`${brand.brand} ______`} />
-            </>
+            <Typography type="title" text={brand.name} />
+            <Typography type="title" text={`${brand.brand} ______`} />
             <Typography
               type="body"
               text={brand.description}
@@ -96,8 +91,9 @@ export const Home = () => {
             />
           </div>
 
-          {/** 
-            <img src={mauricio_face} alt="imagem do maurício" />*/}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img src={mauricio_face} alt="imagem do maurício" />
+          </div>
         </div>
       </div>
 
@@ -143,10 +139,6 @@ export const Home = () => {
           </a>
         </div>
       </div>
-      <button onClick={() => floatingImageRef.current.openModal()}>
-        teste
-      </button>
-      <FloatingImage path={big_image} ref={floatingImageRef} />
     </div>
   );
 };
