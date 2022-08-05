@@ -105,7 +105,7 @@ export const Home = () => {
             />
           </div>
 
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className={styles.imageWrapper}>
             <img src={mauricio_face} alt="imagem do maurício" />
           </div>
         </div>

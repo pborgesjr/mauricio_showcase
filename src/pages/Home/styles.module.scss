@@ -1,4 +1,4 @@
-@use "../../styles/_colors.module.scss" as colors;
+@use "../../styles/_colors.scss" as colors;
 
 $MAX_WIDTH: 70rem;
 
@@ -14,10 +14,14 @@ $MAX_WIDTH: 70rem;
     position: absolute;
     top: 15rem;
     left: 0;
-  }
 
-  .brandText {
-    font-size: 0.8rem;
+    .brandText {
+      font-size: 0.8rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
   }
 
   @media screen and (max-width: 800px) {
@@ -54,20 +58,42 @@ $MAX_WIDTH: 70rem;
 
   .bioWrapper {
     display: flex;
+    align-items: center;
     max-width: $MAX_WIDTH;
+
+    .textWrapper {
+      padding: 0 0.5rem;
+    }
 
     .descriptionContainer {
       margin-top: 30px;
+    }
+
+    .imageWrapper {
+      display: flex;
+      align-items: center;
+      max-width: $MAX_WIDTH;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column-reverse;
+
+      .imageWrapper {
+        padding: 0 1rem 1rem 0;
+        max-width: 15rem;
+      }
     }
   }
 
   span {
     color: colors.$black100;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
   }
 }
 
