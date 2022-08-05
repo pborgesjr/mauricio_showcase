@@ -7,6 +7,7 @@ export type ImageItem = {
 };
 
 export interface LinkType {
-  path: string;
+  name: string;
+  path?: string;
   ref?: RefObject<HTMLDivElement>;
 }

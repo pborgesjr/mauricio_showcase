@@ -1,0 +1,50 @@
+@use "../../styles/_colors.scss" as colors;
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
+
+  svg {
+    color: colors.$white100;
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 0 1rem 1rem;
+  border: 2px solid colors.$white100;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.image-wrapper {
+  max-width: 30rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}

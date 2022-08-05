@@ -26,20 +26,20 @@ export const Home = () => {
 
   const HEADER_FOOTER_LINKS = [
     {
-      path: routes.home,
+      name: routes.home,
       ref: homeRef,
     },
     {
-      path: routes.about,
+      name: routes.about,
       ref: bioRef,
     },
     {
-      path: routes.projects,
+      name: routes.projects,
       ref: projectsRef,
     },
     {
-      path: routes.contact,
-      ref: contactRef,
+      name: routes.contact,
+      path: "/contact",
     },
   ];
 

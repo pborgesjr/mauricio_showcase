@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { LinkAggregator } from "..";
 import { IoMdReorder, IoIosClose } from "react-icons/io";
-import { LinkType } from "../../constants";
 
 import styles from "./styles.module.scss";
 import { app_logo } from "../../assets";
+import { LinkAggregatorProps } from "../LinkAggregator/LinkAggregator";
 
-interface HeaderProps {
-  links: Array<LinkType>;
-}
+interface HeaderProps extends LinkAggregatorProps {}
 
-export const Header = ({ links }: HeaderProps) => {
+export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
 
   const handleToggleMenu = () => {
     setIsMobileMenu((prevState) => !prevState);
+  };
+
+  const handleCallback = () => {
+    if (isMobileMenu) {
+      handleToggleMenu();
+    }
+    callback?.();
   };
 
   return (
@@ -34,7 +39,8 @@ export const Header = ({ links }: HeaderProps) => {
 
           <LinkAggregator
             links={links}
-            callback={isMobileMenu ? handleToggleMenu : undefined}
+            shouldUnderline={shouldUnderline}
+            callback={handleCallback}
           />
         </div>
 
