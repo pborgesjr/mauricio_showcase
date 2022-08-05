@@ -1,19 +1,17 @@
-import React, { MutableRefObject, useState } from "react";
+import React, { useState } from "react";
+import { LinkType } from "../../constants";
 
 import styles from "./styles.module.scss";
 
 interface LinkAggregatorProps {
   links: Array<LinkType>;
+  callback?: VoidFunction;
   shouldUnderline?: boolean;
-}
-
-interface LinkType {
-  path: string;
-  ref?: MutableRefObject<HTMLDivElement | undefined>;
 }
 
 export const LinkAggregator = ({
   links,
+  callback,
   shouldUnderline,
 }: LinkAggregatorProps) => {
   const [activeItem, setActiveItem] = useState("home");
@@ -22,7 +20,7 @@ export const LinkAggregator = ({
     if (shouldUnderline) {
       setActiveItem(path);
     }
-
+    callback?.();
     ref?.current?.scrollIntoView({ behavior: "smooth" });
   };
 

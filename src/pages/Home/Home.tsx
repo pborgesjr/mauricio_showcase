@@ -1,212 +1,155 @@
 import React, { useRef } from "react";
-import {
-  app_logo,
-  area_gourmet,
-  big_image,
-  fachada_casa,
-  mauricio_face,
-} from "../../assets";
-import { LinkAggregator, Typography } from "../../components";
-import { Slide } from "react-slideshow-image";
-import colors from "../../styles/_colors.module.scss";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import Carousel from "react-elastic-carousel";
 
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { app_logo, mauricio_face } from "../../assets";
+import {
+  LinkAggregator,
+  ResponsiveVideoPlayer,
+  Typography,
+  Header,
+} from "../../components";
+import { getLocale } from "../../locale";
 
 import styles from "./styles.module.scss";
-import ReactPlayer from "react-player";
-
-const MOCK_BIO_TEXT =
-  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.\n\n Ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.";
+import "./Carousel.styles.scss";
+import { instagramLink, whatsAppLink } from "../../constants";
+import { useFetch, useWindowSize } from "../../hooks";
 
 export const Home = () => {
-  const homeRef = useRef<HTMLDivElement | undefined>(undefined);
-  const bioRef = useRef<HTMLDivElement | undefined>(undefined);
-  const projectsRef = useRef<HTMLDivElement | undefined>(undefined);
-  //const contactRef = useRef<HTMLDivElement | undefined>(undefined);
+  const { brand, routes, imageCategory } = getLocale();
+
+  const homeRef = useRef<HTMLDivElement>(null);
+  const bioRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const HEADER_FOOTER_LINKS = [
+    {
+      path: routes.home,
+      ref: homeRef,
+    },
+    {
+      path: routes.about,
+      ref: bioRef,
+    },
+    {
+      path: routes.projects,
+      ref: projectsRef,
+    },
+    {
+      path: routes.contact,
+      ref: contactRef,
+    },
+  ];
+
+  const showCaseImageList = useFetch("showcase");
+  const categoriesImageList = useFetch("categories");
+  const itemsToShow = useWindowSize([
+    {
+      minWidth: 1200,
+      itemsToShow: 4,
+    },
+    {
+      minWidth: 800,
+      itemsToShow: 2,
+    },
+    {
+      minWidth: 600,
+      itemsToShow: 1,
+    },
+  ]);
 
   return (
     <div className={styles.main}>
-      <div className={styles.header} ref={homeRef}>
-        <img src={app_logo} />
-        <LinkAggregator
-          links={[
-            {
-              path: "home",
-              ref: homeRef,
-            },
-            {
-              path: "sobre",
-              ref: bioRef,
-            },
-            {
-              path: "projetos",
-              ref: projectsRef,
-            },
-            {
-              path: "contato",
-              ref: undefined,
-            },
-          ]}
-        />
+      <div ref={homeRef}>
+        <Header links={HEADER_FOOTER_LINKS} />
       </div>
 
       <div className={styles.imageSlideShow}>
         <Typography
           customContainerStyles={styles.brand}
           customStyles={styles.brandText}
-          text="maarchviz.com ●  by mauricio alves"
+          text={brand.url}
           type="body"
           verticalOrientation
         />
 
-        <Slide
-          slidesToScroll={1}
-          slidesToShow={1}
-          arrows={false}
-          canSwipe={false}
-          transitionDuration={9000}
-          easing="cubic"
+        <Carousel
+          enableSwipe={false}
+          renderPagination={() => <></>}
+          renderArrow={() => <></>}
+          transitionMs={4000}
+          enableAutoPlay
+          autoPlaySpeed={3000}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={big_image}
-              style={{
-                width: "100%",
-                maxWidth: "70rem",
-              }}
-            />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={big_image}
-              style={{
-                width: "100%",
-                maxWidth: "70rem",
-              }}
-            />
-          </div>
-        </Slide>
+          {showCaseImageList.map((image, index) => (
+            <div key={index} className={styles.imageWrapper}>
+              <img src={image.url} className={styles.image} />
+            </div>
+          ))}
+        </Carousel>
       </div>
 
       <div className={styles.bio} ref={bioRef}>
         <div className={styles.bioWrapper}>
           <div className={styles.textWrapper}>
-            <div>
-              <Typography type="title" text="Mauricio Alves" />
-              <Typography type="title" text="Archviz ______" />
-            </div>
-            <Typography type="body" text={MOCK_BIO_TEXT} />
+            <Typography type="title" text={brand.name} />
+            <Typography type="title" text={`${brand.brand} ______`} />
+            <Typography
+              type="body"
+              text={brand.description}
+              customContainerStyles={styles.descriptionContainer}
+            />
           </div>
 
-          <img src={mauricio_face} alt="imagem do maurício" />
-        </div>
-        <div ref={projectsRef} className={styles.projects}>
-          <Slide
-            slidesToScroll={1}
-            slidesToShow={6}
-            autoplay={false}
-            cssClass={styles.slidesWrapper}
-            easing="ease"
-            prevArrow={<FaChevronLeft size={30} className={styles.leftArrow} />}
-            nextArrow={
-              <FaChevronRight
-                size={30}
-                className={styles.rightArrow}
-                color={colors.red}
-              />
-            }
-          >
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Sala de estar" />
-            </div>
-            <div className={styles.slide}>
-              <img src={area_gourmet} />
-              <Typography type="body" text="Quarto" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Fachada" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Área Gourmet" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Banheiro" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Área de Lazer" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Churrasqueira" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Sala de Jantar" />
-            </div>
-            <div className={styles.slide}>
-              <img src={fachada_casa} />
-              <Typography type="body" text="Escritório" />
-            </div>
-          </Slide>
+          <div className={styles.imageWrapper}>
+            <img src={mauricio_face} alt="imagem do maurício" />
+          </div>
         </div>
       </div>
 
-      <div className={styles.videoShow}>
-        <div className={styles.video}>
-          <ReactPlayer
-            url={
-              "https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
-            }
-            config={{
-              youtube: {
-                playerVars: { showinfo: 1 },
-              },
-            }}
-            height={630}
-            width={"70rem"}
-            muted
-            volume={0}
-            loop={true}
-            playing
-          />
-        </div>
-        <img src={app_logo} className={styles.logo} />
+      <div ref={projectsRef} className={styles.projects}>
+        <Carousel
+          itemsToScroll={1}
+          itemsToShow={itemsToShow}
+          renderPagination={() => <></>}
+        >
+          {categoriesImageList.map((item, index) => (
+            <div className="slide" id="hoverable-item" key={index}>
+              <img src={item.url} />
+              <Typography type="body" text={imageCategory[item.name]} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
 
-        <LinkAggregator
-          links={[
-            {
-              path: "home",
-              ref: homeRef,
-            },
-            {
-              path: "sobre",
-              ref: bioRef,
-            },
-            {
-              path: "projetos",
-              ref: projectsRef,
-            },
-            {
-              path: "contato",
-              ref: undefined,
-            },
-          ]}
+      <div className={styles.videoGrid}>
+        <div />
+        <ResponsiveVideoPlayer
+          url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
+          muted
+          playing={false}
+          volume={0}
+          loop
         />
+        <div />
+      </div>
+
+      <div className={styles.footer}>
+        <img src={app_logo} />
+
+        <LinkAggregator links={HEADER_FOOTER_LINKS} />
+
+        <div className={styles.links} ref={contactRef}>
+          <a href={whatsAppLink} rel="external" target="_blank">
+            <FaWhatsapp size={40} className={styles.contactIcon} />
+          </a>
+
+          <a href={instagramLink} rel="external" target="_blank">
+            <FaInstagram className={styles.contactIcon} size={40} />
+          </a>
+        </div>
       </div>
     </div>
   );

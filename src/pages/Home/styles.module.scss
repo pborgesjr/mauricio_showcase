@@ -1,127 +1,168 @@
-@use '../../styles/_colors.module.scss' as colors;
+@use "../../styles/_colors.scss" as colors;
+
+$MAX_WIDTH: 70rem;
 
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 3rem;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    gap: 25rem;
-    width: 100%;
-    max-width: 70rem;
-
-    img {
-        max-width: 6rem;
-    }
+  padding-bottom: 3rem;
 }
 
 .imageSlideShow {
-    width: 100%;
-    position: relative;
-    bottom: -8rem;
+  position: relative;
+  bottom: -8rem;
 
-.brand {
+  .brand {
     position: absolute;
     top: 15rem;
-}
+    left: 0;
 
-.brandText {
-    font-size: 0.8rem;
-}
+    .brandText {
+      font-size: 0.8rem;
+    }
 
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    bottom: 0;
+  }
+
+  .imageWrapper {
+    max-width: $MAX_WIDTH;
+    margin: 0 0.5rem;
+
+    @media screen and (max-width: 800px) {
+      margin: 0;
+    }
+
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
 }
 
 .bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 17rem 0 6rem 0;
+  background-color: colors.$white100;
+
+  @media screen and (max-width: 800px) {
+    padding: 5rem 0;
+  }
+
+  .bioWrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 17rem 0;
-    background-color: colors.$white100;
-    width: 100%;
+    max-width: $MAX_WIDTH;
 
-    .bioWrapper {
-        display: flex;
-        max-width: 70rem;
-
-        .textWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .textWrapper {
+      padding: 0 0.5rem;
     }
 
-    span {
-        color: colors.$black100;
-    }
-    
-    img {
-        max-height: 22rem;
-
+    .descriptionContainer {
+      margin-top: 30px;
     }
 
-    .projects {
+    .imageWrapper {
+      display: flex;
+      align-items: center;
+      max-width: $MAX_WIDTH;
+
+      img {
+        display: block;
         width: 100%;
-        margin-top: 5rem;
-    }
-}
-
-.slidesWrapper {
-padding: 1.2rem 0;
-
-    .leftArrow {
-        margin-left: 10px
-    }
-
-    .rightArrow {
-        margin-right: 10px
-    }
-
-    .slide {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.3s;
-        padding: 0 0.5rem;
-
-        &:hover {
-            //cursor: pointer;
-            transform: scale(1.1);
-        }
-
-        span {
-            position: relative;
-            bottom: 5rem;
-            color: colors.$white100;
-            text-transform: uppercase;
-            font-size: 1vw;
-            letter-spacing: 0.15rem;
-        }
-    }
-    img {
-        height: 350px;
-        width: 100%;
+        height: auto;
         object-fit: cover;
-        filter:brightness(30%);
-
+      }
     }
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column-reverse;
+
+      .imageWrapper {
+        padding: 0 1rem 1rem 0;
+        max-width: 15rem;
+      }
+    }
+  }
+
+  span {
+    color: colors.$black100;
+  }
 }
 
-.videoShow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.projects {
+  background-color: colors.$white100;
+  padding-bottom: 17rem;
 
-    .video {
-        position: relative;
-        top: -8rem;
+  button {
+    background-color: colors.$transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      //cursor: pointer;
+      transform: scale(1.15);
+    }
+  }
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+
+  @media screen {
+    @media (min-width: 2800px) {
+      grid-template-columns: 30% 40% 30%;
     }
 
-    .logo {
-        max-width: 6rem;
+    @media (max-width: 1800px) {
+      grid-template-columns: 10% 80% 10%;
     }
 
+    @media (max-width: 1300px) {
+      grid-template-columns: 5% 90% 5%;
+    }
+
+    @media (max-width: 1000px) {
+      display: block;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 10rem;
+  }
+
+  .contactIcon {
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  a {
+    text-decoration: none;
+    color: colors.$white100;
+  }
 }

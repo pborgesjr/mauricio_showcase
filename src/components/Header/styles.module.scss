@@ -1,0 +1,69 @@
+@use "../../styles/_colors.scss" as colors;
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    display: flex;
+    flex-basis: 70rem;
+    align-items: center;
+    gap: 15rem;
+
+    @media screen and (max-width: 800px) {
+      justify-content: space-between;
+      padding: 0 1rem;
+      gap: 0;
+    }
+  }
+
+  img {
+    max-width: 7rem;
+  }
+}
+
+.button {
+  display: none;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    color: colors.$white100;
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+}
+
+.links {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.closeButton {
+  padding-bottom: 3rem;
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: colors.$blackOpacity98;
+
+  > div {
+    flex-direction: column;
+  }
+}
