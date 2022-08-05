@@ -14,7 +14,7 @@ import { getLocale } from "../../locale";
 import styles from "./styles.module.scss";
 import "./Carousel.styles.scss";
 import { instagramLink, whatsAppLink } from "../../constants";
-import { useFetch } from "../../hooks";
+import { useFetch, useWindowSize } from "../../hooks";
 
 export const Home = () => {
   const { brand, routes, imageCategory } = getLocale();
@@ -47,6 +47,20 @@ export const Home = () => {
 
   const showCaseImageList = useFetch("showcase");
   const categoriesImageList = useFetch("categories");
+  const itemsToShow = useWindowSize([
+    {
+      minWidth: 1200,
+      itemsToShow: 4,
+    },
+    {
+      minWidth: 800,
+      itemsToShow: 2,
+    },
+    {
+      minWidth: 600,
+      itemsToShow: 1,
+    },
+  ]);
 
   return (
     <div className={styles.main}>
@@ -100,7 +114,7 @@ export const Home = () => {
       <div ref={projectsRef} className={styles.projects}>
         <Carousel
           itemsToScroll={1}
-          itemsToShow={6}
+          itemsToShow={itemsToShow}
           renderPagination={() => <></>}
         >
           {categoriesImageList.map((item, index) => (
