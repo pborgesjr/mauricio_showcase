@@ -24,8 +24,6 @@ export const Home = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const floatingImageRef = useRef(null);
-
   const HEADER_FOOTER_LINKS = [
     {
       path: routes.home,

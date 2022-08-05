@@ -1,5 +1,4 @@
 import React, { useState, useImperativeHandle, forwardRef } from "react";
-import Modal from "react-modal";
 import { IoIosClose } from "react-icons/io";
 
 import "./styles.scss";
@@ -21,8 +20,15 @@ export const FloatingImage = forwardRef(({ path }: FloatingImageProps, ref) => {
   }));
 
   return isOpened ? (
-    <div className="modal">
-      <div className="overlay">oi123</div>
+    <div className="overlay">
+      <div className="content">
+        <button onClick={() => toggleVisibility(false)}>
+          <IoIosClose />
+        </button>
+        <div className="image-wrapper">
+          <img src={path} />
+        </div>
+      </div>
     </div>
   ) : (
     <></>
