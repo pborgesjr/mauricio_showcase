@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { LinkAggregator } from "..";
 import { IoMdReorder, IoIosClose } from "react-icons/io";
 
@@ -8,23 +8,23 @@ import { LinkAggregatorProps } from "../LinkAggregator/LinkAggregator";
 
 interface HeaderProps extends LinkAggregatorProps {}
 
-export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
+export const Header = forwardRef(
+  ({ links, shouldUnderline, callback }: HeaderProps, ref) => {
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
 
-  const handleToggleMenu = () => {
-    setIsMobileMenu((prevState) => !prevState);
-  };
+    const handleToggleMenu = () => {
+      setIsMobileMenu((prevState) => !prevState);
+    };
 
-  const handleCallback = () => {
-    if (isMobileMenu) {
-      handleToggleMenu();
-    }
-    callback?.();
-  };
+    const handleCallback = () => {
+      if (isMobileMenu) {
+        handleToggleMenu();
+      }
+      callback?.();
+    };
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
+    return (
+      <div className={styles.container} ref={ref}>
         <img src={app_logo} />
 
         <div
@@ -48,6 +48,6 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
           <IoMdReorder />
         </button>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);

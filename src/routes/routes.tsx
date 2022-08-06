@@ -7,7 +7,7 @@ export const routes = [
     component: <Home />,
   },
   {
-    path: "/contact",
+    path: "/contato",
     name: "Contato",
     component: <Contact />,
   },

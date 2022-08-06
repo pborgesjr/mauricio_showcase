@@ -4,11 +4,18 @@ import { BaseReactPlayerProps } from "react-player/base";
 
 import "./styles.scss";
 
-export const ResponsiveVideoPlayer = (props: BaseReactPlayerProps) => {
+interface ResponsiveVideoPlayerProps extends BaseReactPlayerProps {
+  containerStyles?: string;
+}
+
+export const ResponsiveVideoPlayer = ({
+  containerStyles,
+  ...rest
+}: ResponsiveVideoPlayerProps) => {
   return (
-    <div className="player-wrapper">
+    <div className={`player-wrapper ${containerStyles}`}>
       <ReactPlayer
-        {...props}
+        {...rest}
         style={{
           position: "absolute",
           top: 0,

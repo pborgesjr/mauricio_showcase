@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Carousel from "react-elastic-carousel";
 
-import { app_logo, mauricio_face } from "../../assets";
+import { app_logo, big_image, mauricio_face } from "../../assets";
 import {
   LinkAggregator,
   ResponsiveVideoPlayer,
@@ -28,18 +28,21 @@ export const Home = () => {
     {
       name: routes.home,
       ref: homeRef,
-    },
-    {
-      name: routes.about,
-      ref: bioRef,
+      path: "/",
     },
     {
       name: routes.projects,
       ref: projectsRef,
+      path: "/projetos",
+    },
+    {
+      name: routes.about,
+      ref: bioRef,
+      path: "/sobre",
     },
     {
       name: routes.contact,
-      path: "/contact",
+      path: "/contato",
     },
   ];
 
@@ -62,19 +65,23 @@ export const Home = () => {
 
   return (
     <div className={styles.main}>
-      <div ref={homeRef}>
-        <Header links={HEADER_FOOTER_LINKS} />
-      </div>
+      <Header links={HEADER_FOOTER_LINKS} ref={homeRef} shouldUnderline />
 
       <div className={styles.imageSlideShow}>
-        <Typography
-          customContainerStyles={styles.brand}
-          customStyles={styles.brandText}
-          text={brand.url}
-          type="body"
-          verticalOrientation
-        />
-
+        <div className={styles.teste}>
+          <Typography
+            customContainerStyles={styles.brand}
+            customStyles={styles.brandText}
+            text={brand.url}
+            type="body"
+            verticalOrientation
+          />
+        </div>
+        <div
+          className={styles.testeImage}
+          style={{ backgroundImage: `url(${big_image})` }}
+        ></div>
+        {/**
         <Carousel
           enableSwipe={false}
           renderPagination={() => <></>}
@@ -89,13 +96,25 @@ export const Home = () => {
             </div>
           ))}
         </Carousel>
+         */}
       </div>
 
       <div className={styles.bio} ref={bioRef}>
         <div className={styles.bioWrapper}>
           <div className={styles.textWrapper}>
-            <Typography type="title" text={brand.name} />
-            <Typography type="title" text={`${brand.brand} ______`} />
+            <Typography
+              type="title"
+              text={brand.name}
+              customStyles={styles.brand}
+            />
+            <div className={styles.brandContainer}>
+              <Typography
+                type="title"
+                customStyles={styles.brand}
+                text={`${brand.brand}`}
+              />
+              <div />
+            </div>
             <Typography
               type="body"
               text={brand.description}
@@ -132,8 +151,9 @@ export const Home = () => {
           playing={false}
           volume={0}
           loop
+          containerStyles={styles.videoContainer}
         />
-        <div />
+        <div className={styles.whiteDiv} />
       </div>
 
       <div className={styles.footer}>

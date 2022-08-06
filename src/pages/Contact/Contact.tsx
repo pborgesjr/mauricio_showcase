@@ -18,16 +18,16 @@ export const Contact = () => {
       path: "/",
     },
     {
-      name: routes.about,
-      path: "/",
-    },
-    {
       name: routes.projects,
       path: "/",
     },
     {
+      name: routes.about,
+      path: "/",
+    },
+    {
       name: routes.contact,
-      path: "/contact",
+      path: "/contato",
     },
   ];
 
