@@ -5,34 +5,19 @@ import { MdOutlineMail } from "react-icons/md";
 import { Header, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
 import { getLocale } from "../../locale";
+import { routes } from "../../routes";
 
 import "./styles.scss";
 
 export const Contact = () => {
   const {
-    routes,
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
-
-  const HEADER_FOOTER_LINKS = [
-    {
-      name: routes.projects,
-      path: "/",
-    },
-    {
-      name: routes.about,
-      path: "/",
-    },
-    {
-      name: routes.contact,
-      path: "/contato",
-    },
-  ];
 
   return (
     <>
       {/**TODO: create a default layout for header and footer component */}
-      <Header links={HEADER_FOOTER_LINKS} shouldUnderline />
+      <Header links={routes} shouldUnderline />
       <div className="container">
         <div className="items-container">
           <Typography text={name} type="body" customStyles="title" />

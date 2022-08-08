@@ -2,11 +2,10 @@ import React, { useRef } from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Carousel from "react-elastic-carousel";
 
-import { app_logo, big_image, mauricio_face } from "../../assets";
+import { app_logo, big_image } from "../../assets";
 import {
   LinkAggregator,
   ResponsiveVideoPlayer,
-  Typography,
   Header,
 } from "../../components";
 import { getLocale } from "../../locale";
@@ -15,37 +14,21 @@ import styles from "./styles.module.scss";
 import "./Carousel.styles.scss";
 import { instagramLink, whatsAppLink } from "../../constants";
 import { useFetch, useWindowSize } from "../../hooks";
+import { routes } from "../../routes";
 
 export const Projects = () => {
-  const { brand, routes, imageCategory } = getLocale();
+  const { brand, imageCategory } = getLocale();
 
   const bioRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
-
-  const HEADER_FOOTER_LINKS = [
-    {
-      name: routes.projects,
-      ref: projectsRef,
-      path: "/",
-    },
-    {
-      name: routes.about,
-      ref: bioRef,
-      path: "/sobre",
-    },
-    {
-      name: routes.contact,
-      path: "/contato",
-    },
-  ];
 
   const showCaseImageList = useFetch("showcase");
   const categoriesImageList = useFetch("categories");
 
   return (
     <div className={styles.main}>
-      <Header links={HEADER_FOOTER_LINKS} shouldUnderline />
+      <Header links={routes} shouldUnderline />
 
       <div className={styles.imageSlideShow}>
         <Carousel
@@ -85,7 +68,7 @@ export const Projects = () => {
       <div className={styles.footer}>
         <img src={app_logo} />
 
-        <LinkAggregator links={HEADER_FOOTER_LINKS} shouldUnderline />
+        <LinkAggregator links={routes} shouldUnderline />
 
         <div className={styles.links} ref={contactRef}>
           <a href={whatsAppLink} rel="external" target="_blank">

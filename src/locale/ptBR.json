@@ -8,12 +8,6 @@
         "url": "maarchviz.com ●  by mauricio alves",
         "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.\n\n Ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore."
     },
-    "routes": {
-        "home": "home",
-        "about": "sobre",
-        "projects": "projetos",
-        "contact": "contato"
-    },
     "imageCategory": {
         "bathroom": "Banheiro",
         "bedroom": "Quarto",
