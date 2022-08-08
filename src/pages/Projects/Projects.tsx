@@ -1,28 +1,14 @@
-import React, { useRef } from "react";
-import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import React from "react";
 import Carousel from "react-elastic-carousel";
 
-import { app_logo, big_image } from "../../assets";
-import {
-  LinkAggregator,
-  ResponsiveVideoPlayer,
-  Header,
-} from "../../components";
-import { getLocale } from "../../locale";
+import { big_image } from "../../assets";
+import { ResponsiveVideoPlayer } from "../../components";
 
 import styles from "./styles.module.scss";
 import "./Carousel.styles.scss";
-import { instagramLink, whatsAppLink } from "../../constants";
-import { useFetch, useWindowSize } from "../../hooks";
-import { routes } from "../../routes";
+import { useFetch } from "../../hooks";
 
 export const Projects = () => {
-  const { brand, imageCategory } = getLocale();
-
-  const bioRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
-
   const showCaseImageList = useFetch("showcase");
   const categoriesImageList = useFetch("categories");
 
@@ -37,17 +23,28 @@ export const Projects = () => {
           enableAutoPlay
           autoPlaySpeed={3000}
         >
-          <div
-            className={styles.testeImage}
-            style={{ backgroundImage: `url(${big_image})` }}
-          />
+          {showCaseImageList.map((image) => (
+            <img
+              key={image.name}
+              width={1920}
+              height={1080}
+              src={image.url}
+              alt="REPLACE"
+            />
+          ))}
         </Carousel>
       </div>
 
       <div className={styles.imageList}>
         {categoriesImageList.map((image) => (
-          <div>
-            <img src={image.url} />
+          <div key={image.name}>
+            <img
+              src={image.url}
+              width={1280}
+              height={720}
+              alt={image.prefix || image.name}
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
@@ -59,7 +56,6 @@ export const Projects = () => {
           playing={false}
           volume={0}
           loop
-          containerStyles={styles.videoContainer}
         />
       </div>
     </div>
