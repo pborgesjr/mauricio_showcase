@@ -9,5 +9,4 @@ export type ImageItem = {
 export interface LinkType {
   name: string;
   path?: string;
-  ref?: RefObject<HTMLDivElement>;
 }

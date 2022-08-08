@@ -2,49 +2,40 @@
 
 .container {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 5rem;
 
   svg {
-    color: colors.$white100;
-    font-size: 2rem;
-    margin-right: 1rem;
+    color: colors.$black100;
+    font-size: 2.5rem;
+  }
+
+  span {
+    color: colors.$black100;
   }
 }
-
-.right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+.title {
+  font-family: "Oswald", sans-serif;
+  font-size: 3rem;
 }
 
 .items-container {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
-  padding: 0 1rem 1rem;
-  border: 2px solid colors.$white100;
+  flex: 1;
+  gap: 50px;
+
+  padding: 200px 0 130px 170px;
+
+  background-color: colors.$white100;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
-}
 
-.image-wrapper {
-  max-width: 30rem;
+  gap: 15px;
 
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  @media screen and (max-width: 800px) {
-    display: none;
+  span {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.7556rem;
   }
 }
