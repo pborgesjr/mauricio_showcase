@@ -19,11 +19,15 @@ $MAX_WIDTH: 70rem;
   }
 }
 
+.frozenPlayer {
+  pointer-events: none;
+}
+
 .imageList {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 100px 180px 185px;
+  padding: 115px 170px 185px;
   background-color: colors.$white100;
 
   div {
@@ -38,7 +42,7 @@ $MAX_WIDTH: 70rem;
   }
 }
 
-.videoGrid {
-  margin-right: 180px;
+.videoWrapper {
+  margin-right: 170px;
   margin-top: -170px;
 }

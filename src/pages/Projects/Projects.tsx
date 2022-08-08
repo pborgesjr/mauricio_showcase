@@ -5,7 +5,6 @@ import { big_image } from "../../assets";
 import { ResponsiveVideoPlayer } from "../../components";
 
 import styles from "./styles.module.scss";
-import "./Carousel.styles.scss";
 import { useFetch } from "../../hooks";
 
 export const Projects = () => {
@@ -14,25 +13,16 @@ export const Projects = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.imageSlideShow}>
-        <Carousel
-          enableSwipe={false}
-          renderPagination={() => <></>}
-          renderArrow={() => <></>}
-          transitionMs={4000}
-          enableAutoPlay
-          autoPlaySpeed={3000}
-        >
-          {showCaseImageList.map((image) => (
-            <img
-              key={image.name}
-              width={1920}
-              height={1080}
-              src={image.url}
-              alt="REPLACE"
-            />
-          ))}
-        </Carousel>
+      <div style={{ marginLeft: "170px", marginBottom: "-100px" }}>
+        <ResponsiveVideoPlayer
+          url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
+          muted
+          playing={true}
+          controls={false}
+          volume={0}
+          loop
+          containerStyles={styles.frozenPlayer}
+        />
       </div>
 
       <div className={styles.imageList}>
@@ -49,7 +39,7 @@ export const Projects = () => {
         ))}
       </div>
 
-      <div className={styles.videoGrid}>
+      <div className={styles.videoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
