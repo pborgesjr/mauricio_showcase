@@ -23,31 +23,27 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <img src={app_logo} />
+    <header>
+      <img src={app_logo} />
 
-        <div
-          className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}
+      <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
+        <button
+          onClick={handleToggleMenu}
+          className={`${styles.button} ${isMobileMenu && styles.closeButton}`}
         >
-          <button
-            onClick={handleToggleMenu}
-            className={`${styles.button} ${isMobileMenu && styles.closeButton}`}
-          >
-            <IoIosClose />
-          </button>
-
-          <LinkAggregator
-            links={links}
-            shouldUnderline={shouldUnderline}
-            callback={handleCallback}
-          />
-        </div>
-
-        <button onClick={handleToggleMenu} className={`${styles.button}`}>
-          <IoMdReorder />
+          <IoIosClose />
         </button>
+
+        <LinkAggregator
+          links={links}
+          shouldUnderline={shouldUnderline}
+          callback={handleCallback}
+        />
       </div>
-    </div>
+
+      <button onClick={handleToggleMenu} className={`${styles.button}`}>
+        <IoMdReorder />
+      </button>
+    </header>
   );
 };

@@ -1,13 +1,18 @@
-import { Contact, Home } from "../pages";
+import { About, Contact, Projects } from "../pages";
 
 export const routes = [
   {
     path: "/",
-    name: "Home",
-    component: <Home />,
+    name: "Projetos",
+    component: <Projects />,
   },
   {
-    path: "/contact",
+    path: "/sobre",
+    name: "Sobre",
+    component: <About />,
+  },
+  {
+    path: "/contato",
     name: "Contato",
     component: <Contact />,
   },

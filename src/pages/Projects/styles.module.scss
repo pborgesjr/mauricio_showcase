@@ -1,0 +1,87 @@
+@use "../../styles/_colors.scss" as colors;
+
+$MAX_WIDTH: 70rem;
+
+.imageSlideShow {
+  position: relative;
+  display: flex;
+  padding-left: 170px;
+  margin: 0 0 -86px;
+
+  .testeImage {
+    width: 100%;
+    height: 770px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin: 0 -10px;
+    padding-left: 0;
+  }
+
+  .imageWrapper {
+    border: 5px solid blue;
+    //max-width: $MAX_WIDTH;
+    //margin: 0 0.5rem;
+
+    @media screen and (max-width: 800px) {
+      margin: 0;
+    }
+
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 100px 180px 185px;
+  background-color: colors.$white100;
+
+  div {
+    flex: 1 1 480px;
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.videoGrid {
+  margin-right: 180px;
+  margin-top: -170px;
+  //display: grid;
+  //grid-template-columns: 87% 13%;
+
+  .videoContainer {
+    // top: -170px;
+  }
+
+  /**@media screen {
+    @media (min-width: 2800px) {
+      grid-template-columns: 30% 40% 30%;
+    }
+
+    @media (max-width: 1800px) {
+      grid-template-columns: 10% 80% 10%;
+    }
+
+    @media (max-width: 1300px) {
+      grid-template-columns: 5% 90% 5%;
+    }
+
+    @media (max-width: 1000px) {
+      display: block;
+    }
+  }*/
+}

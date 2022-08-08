@@ -1,24 +1,31 @@
 @use "../../styles/_colors.scss" as colors;
 
-.container {
+header {
   display: flex;
-  justify-content: center;
-
-  .wrapper {
-    display: flex;
-    flex-basis: 70rem;
-    align-items: center;
-    gap: 15rem;
-
-    @media screen and (max-width: 800px) {
-      justify-content: space-between;
-      padding: 0 1rem;
-      gap: 0;
-    }
-  }
+  align-items: center;
+  padding: 70px 0 60px;
+  padding-left: 170px;
 
   img {
-    max-width: 7rem;
+    max-width: 5rem;
+  }
+
+  @media (max-width: 800px) {
+    justify-content: space-between;
+  }
+
+  /**@media (min-width: 1366px) {
+    padding-left: 170px;
+  }*/
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: 800px) {
+    display: none;
   }
 }
 
@@ -34,12 +41,6 @@
 
   @media screen and (max-width: 800px) {
     display: block;
-  }
-}
-
-.links {
-  @media screen and (max-width: 800px) {
-    display: none;
   }
 }
 

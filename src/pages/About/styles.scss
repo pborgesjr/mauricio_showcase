@@ -1,0 +1,67 @@
+@use "../../styles/_colors.scss" as colors;
+
+.wrapper {
+  background-color: colors.$white100;
+  padding: 205px 180px 0;
+}
+
+.item {
+  display: flex;
+  padding-bottom: 120px;
+
+  article {
+    h1,
+    h2,
+    p {
+      color: colors.$black100;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    h1 {
+      font-family: "Oswald", sans-serif;
+      letter-spacing: 2px;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      margin-top: 25px;
+    }
+  }
+
+  img {
+    width: 345px;
+    height: 345px;
+    display: block;
+    object-fit: cover;
+  }
+
+  #right-image {
+    float: right;
+    margin-left: 80px;
+  }
+
+  #left-image {
+    float: left;
+    margin-right: 80px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    line-height: 35px;
+  }
+
+  div {
+    width: 100px;
+    margin-top: 12px;
+    border-bottom: 4px solid colors.$black100;
+    border-radius: 4px;
+    margin-left: 12px;
+  }
+}
