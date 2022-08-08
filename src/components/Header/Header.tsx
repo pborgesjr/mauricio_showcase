@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { useState } from "react";
 import { LinkAggregator } from "..";
 import { IoMdReorder, IoIosClose } from "react-icons/io";
 
@@ -23,7 +23,7 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
   };
 
   return (
-    <div className={styles.container}>
+    <header>
       <img src={app_logo} />
 
       <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
@@ -44,6 +44,6 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
       <button onClick={handleToggleMenu} className={`${styles.button}`}>
         <IoMdReorder />
       </button>
-    </div>
+    </header>
   );
 };

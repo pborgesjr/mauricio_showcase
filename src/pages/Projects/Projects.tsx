@@ -28,8 +28,6 @@ export const Projects = () => {
 
   return (
     <div className={styles.main}>
-      <Header links={routes} shouldUnderline />
-
       <div className={styles.imageSlideShow}>
         <Carousel
           enableSwipe={false}
@@ -63,22 +61,6 @@ export const Projects = () => {
           loop
           containerStyles={styles.videoContainer}
         />
-      </div>
-
-      <div className={styles.footer}>
-        <img src={app_logo} />
-
-        <LinkAggregator links={routes} shouldUnderline />
-
-        <div className={styles.links} ref={contactRef}>
-          <a href={whatsAppLink} rel="external" target="_blank">
-            <FaWhatsapp size={40} className={styles.contactIcon} />
-          </a>
-
-          <a href={instagramLink} rel="external" target="_blank">
-            <FaInstagram className={styles.contactIcon} size={40} />
-          </a>
-        </div>
       </div>
     </div>
   );
