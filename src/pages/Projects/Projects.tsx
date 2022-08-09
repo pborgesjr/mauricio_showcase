@@ -1,23 +1,20 @@
 import React from "react";
-import Carousel from "react-elastic-carousel";
 
-import { big_image } from "../../assets";
-import { ResponsiveVideoPlayer } from "../../components";
+import { ResponsiveVideoPlayer, Typography } from "../../components";
 
 import styles from "./styles.module.scss";
 import { useFetch } from "../../hooks";
 
 export const Projects = () => {
-  const showCaseImageList = useFetch("showcase");
-  const categoriesImageList = useFetch("categories");
+  const categoriesImageList = useFetch("projetos");
 
   return (
-    <div className={styles.main}>
-      <div style={{ marginLeft: "170px", marginBottom: "-100px" }}>
+    <div>
+      <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
-          playing={true}
+          playing={false}
           controls={false}
           volume={0}
           loop
@@ -27,19 +24,24 @@ export const Projects = () => {
 
       <div className={styles.imageList}>
         {categoriesImageList.map((image) => (
-          <div key={image.name}>
+          <div key={image.name} className={styles.picture}>
             <img
               src={image.url}
-              width={1280}
-              height={720}
+              width={570}
+              height={320}
               alt={image.prefix || image.name}
               loading="lazy"
+            />
+            <Typography
+              text={image.name}
+              type="body"
+              customContainerStyles={styles.captionWrapper}
             />
           </div>
         ))}
       </div>
 
-      <div className={styles.videoWrapper}>
+      <div className={styles.bottomVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted

@@ -1,9 +1,4 @@
-import {
-  getDownloadURL,
-  listAll,
-  ref,
-  StorageReference,
-} from "firebase/storage";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { useState, useEffect } from "react";
 import { ImageItem } from "../constants";
 import { storage } from "../firebase";
