@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
-import { ResponsiveVideoPlayer, Typography } from "../../components";
+import {
+  Modal,
+  ResponsiveVideoPlayer,
+  Slider,
+  Typography,
+} from "../../components";
 
 import styles from "./styles.module.scss";
 import { useFetch } from "../../hooks";
 
 export const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<string>();
+
+  const modalRef = useRef(null);
+
+  const handleSelectProject = (path: string) => {
+    setSelectedProject(path);
+    modalRef?.current?.openModal();
+  };
+
   const categoriesImageList = useFetch("projetos");
+  const selectedProjectImages = useFetch(selectedProject);
 
   return (
-    <div>
+    <>
       <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
@@ -24,7 +39,11 @@ export const Projects = () => {
 
       <div className={styles.imageList}>
         {categoriesImageList.map((image) => (
-          <div key={image.name} className={styles.picture}>
+          <button
+            key={image.name}
+            className={styles.pictureButton}
+            onClick={() => handleSelectProject(image.name)}
+          >
             <img
               src={image.url}
               width={570}
@@ -37,7 +56,7 @@ export const Projects = () => {
               type="body"
               customContainerStyles={styles.captionWrapper}
             />
-          </div>
+          </button>
         ))}
       </div>
 
@@ -50,6 +69,9 @@ export const Projects = () => {
           loop
         />
       </div>
-    </div>
+      <Modal ref={modalRef}>
+        <Slider images={selectedProjectImages} />
+      </Modal>
+    </>
   );
 };

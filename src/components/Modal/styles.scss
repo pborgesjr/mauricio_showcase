@@ -19,23 +19,22 @@
   width: 100vw;
   height: 100vh;
 
-  button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: none;
-    background-color: colors.$transparent;
-  }
-
   svg {
-    color: white;
+    color: colors.$whiteOpacity50;
     font-size: 5rem;
   }
 }
 
-.image-wrapper {
-  img {
-    height: auto;
-    width: 100%;
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: colors.$transparent;
+  transition: transform ease 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.15);
   }
 }

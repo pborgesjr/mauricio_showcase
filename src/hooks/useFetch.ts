@@ -4,7 +4,7 @@ import { ImageItem } from "../constants";
 import { storage } from "../firebase";
 import { formatFileName } from "../utils";
 
-export const useFetch = (path: string) => {
+export const useFetch = (path?: string) => {
   let ignore = false;
   const INITIAL_VALUE = () => [];
 
@@ -32,7 +32,9 @@ export const useFetch = (path: string) => {
   };
 
   useEffect(() => {
-    fetchAll();
+    if (path) {
+      fetchAll();
+    }
 
     return () => {
       ignore = true;

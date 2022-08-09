@@ -1,0 +1,41 @@
+@use "../../styles/_colors.scss" as colors;
+
+.main {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  div {
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  svg {
+    color: colors.$whiteOpacity50;
+    font-size: 3rem;
+  }
+}
+
+.button {
+  border: none;
+  background-color: colors.$transparent;
+  transition: transform ease 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+  }
+}
+
+.invisible-button {
+  cursor: none;
+  pointer-events: none;
+  opacity: 0;
+}
