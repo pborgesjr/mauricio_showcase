@@ -2,7 +2,7 @@
 
 .wrapper {
   background-color: colors.$white100;
-  padding: 205px 180px 0;
+  padding: 205px 170px 0;
 }
 
 .item {
@@ -21,20 +21,22 @@
     h1 {
       font-family: "Oswald", sans-serif;
       letter-spacing: 2px;
-      font-size: 2.5rem;
+      font-size: clamp(3rem, 1vw, 5rem);
     }
 
     p {
       font-family: "Quicksand", sans-serif;
       font-weight: 600;
+      font-size: clamp(1.3rem, 1vw, 2rem);
       margin-top: 25px;
     }
   }
 
   img {
-    width: 345px;
-    height: 345px;
     display: block;
+    width: 100%;
+    max-width: 345px;
+    max-height: 345px;
     object-fit: cover;
   }
 

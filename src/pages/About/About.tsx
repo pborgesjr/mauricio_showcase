@@ -9,7 +9,13 @@ export const About = () => {
       <div className="wrapper">
         <div className="item">
           <article>
-            <img src={big_image} id="right-image" />
+            <img
+              src={big_image}
+              id="right-image"
+              width={345}
+              height={345}
+              loading="lazy"
+            />
             <div>
               <h1>Maurício Alves</h1>
               <div className="brand">
@@ -36,7 +42,13 @@ export const About = () => {
 
         <div className="item">
           <article>
-            <img src={big_image} id="left-image" />
+            <img
+              src={big_image}
+              id="left-image"
+              width={345}
+              height={345}
+              loading="lazy"
+            />
             <div>
               <h1>Lorem ipsum</h1>
               <div className="brand">
