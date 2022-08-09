@@ -1,22 +1,8 @@
 @use "../../styles/_colors.scss" as colors;
 
-$MAX_WIDTH: 70rem;
-
-.imageSlideShow {
-  position: relative;
-  display: flex;
-  padding-left: 170px;
-  margin: 0 0 -86px;
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-
-  @media screen and (max-width: 800px) {
-    margin: 0 -10px;
-    padding-left: 0;
-  }
+.topVideoWrapper {
+  margin-left: 170px;
+  margin-bottom: -100px;
 }
 
 .frozenPlayer {
@@ -29,20 +15,47 @@ $MAX_WIDTH: 70rem;
   gap: 10px;
   padding: 115px 170px 185px;
   background-color: colors.$white100;
+}
 
-  div {
-    flex: 1 1 480px;
+.picture {
+  position: relative;
+  flex: 1 1 480px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: ease 0.2s;
+  }
+
+  &:hover {
+    cursor: pointer;
 
     img {
+      filter: brightness(20%);
+    }
+
+    div {
       display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
     }
   }
 }
 
-.videoWrapper {
+.captionWrapper {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  span {
+    color: colors.$white100;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+  }
+}
+
+.bottomVideoWrapper {
   margin-right: 170px;
   margin-top: -170px;
 }
