@@ -1,5 +1,3 @@
-import { RefObject } from "react";
-
 export type ImageItem = {
   name: string;
   url: string;
@@ -9,4 +7,11 @@ export type ImageItem = {
 export interface LinkType {
   name: string;
   path?: string;
+}
+
+export interface ImageType {
+  filename: string;
+  folder: string;
+  url: string;
+  publicId: string;
 }

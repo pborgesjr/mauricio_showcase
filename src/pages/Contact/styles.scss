@@ -1,7 +1,7 @@
 @use "../../styles/_colors.scss" as colors;
 
 .container {
-  display: flex;
+  background-color: colors.$white100;
 
   svg {
     color: colors.$black100;
@@ -12,6 +12,18 @@
     color: colors.$black100;
   }
 }
+
+.items-container {
+  margin: 0 auto;
+  max-width: 1366px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 50px;
+
+  padding: 200px 0 130px 170px;
+}
+
 .title {
   font-family: "Oswald", sans-serif;
   font-size: 2.5rem;
@@ -20,17 +32,6 @@
 .body {
   font-family: "Quicksand", sans-serif;
   font-size: 1.3rem;
-}
-
-.items-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 50px;
-
-  padding: 200px 0 130px 170px;
-
-  background-color: colors.$white100;
 }
 
 .contact-item {

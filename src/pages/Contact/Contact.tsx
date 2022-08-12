@@ -14,30 +14,28 @@ export const Contact = () => {
   } = getLocale();
 
   return (
-    <>
-      <div className="container">
-        <div className="items-container">
-          <Typography text={name} type="body" customStyles="title" />
-          <div className="contact-item">
-            <MdOutlineMail />
-            <Typography type="body" text={email} customStyles="body" />
-          </div>
+    <div className="container">
+      <div className="items-container">
+        <Typography text={name} type="body" customStyles="title" />
+        <div className="contact-item">
+          <MdOutlineMail />
+          <Typography type="body" text={email} customStyles="body" />
+        </div>
 
-          <div className="contact-item">
-            <a href={whatsAppLink} rel="external" target="_blank">
-              <FaWhatsapp />
-            </a>
-            <Typography type="body" text={phoneNumber} customStyles="body" />
-          </div>
+        <div className="contact-item">
+          <a href={whatsAppLink} rel="external" target="_blank">
+            <FaWhatsapp />
+          </a>
+          <Typography type="body" text={phoneNumber} customStyles="body" />
+        </div>
 
-          <div className="contact-item">
-            <a href={instagramLink} rel="external" target="_blank">
-              <FaInstagram />
-            </a>
-            <Typography type="body" text={instagramId} customStyles="body" />
-          </div>
+        <div className="contact-item">
+          <a href={instagramLink} rel="external" target="_blank">
+            <FaInstagram />
+          </a>
+          <Typography type="body" text={instagramId} customStyles="body" />
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,21 +1,30 @@
 import React from "react";
-import { big_image } from "../../assets";
+import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
+import { thumbnail } from "@cloudinary/url-gen/actions/resize";
+
+import { transformImage } from "../../services";
+import { useFetch } from "../../hooks";
 
 import "./styles.scss";
 
 export const About = () => {
+  const allImages = useFetch("about");
+
   return (
-    <>
+    <div className="container">
       <div className="wrapper">
         <div className="item">
           <article>
-            <img
-              src={big_image}
-              id="right-image"
-              width={345}
-              height={345}
-              loading="lazy"
-            />
+            {allImages.length > 0 && (
+              <div id="right-image">
+                <AdvancedImage
+                  cldImg={transformImage(allImages[0].publicId).resize(
+                    thumbnail().width(350).height(350)
+                  )}
+                  plugins={[lazyload(), placeholder()]}
+                />
+              </div>
+            )}
             <div>
               <h1>Maurício Alves</h1>
               <div className="brand">
@@ -42,13 +51,16 @@ export const About = () => {
 
         <div className="item">
           <article>
-            <img
-              src={big_image}
-              id="left-image"
-              width={345}
-              height={345}
-              loading="lazy"
-            />
+            {allImages.length > 0 && (
+              <div id="left-image">
+                <AdvancedImage
+                  cldImg={transformImage(allImages[1].publicId).resize(
+                    thumbnail().width(350).height(350)
+                  )}
+                  plugins={[lazyload(), placeholder()]}
+                />
+              </div>
+            )}
             <div>
               <h1>Lorem ipsum</h1>
               <div className="brand">
@@ -73,6 +85,6 @@ export const About = () => {
           </article>
         </div>
       </div>
-    </>
+    </div>
   );
 };

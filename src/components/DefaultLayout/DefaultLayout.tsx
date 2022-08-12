@@ -8,10 +8,10 @@ interface RouteProps {
 
 export const DefaultLayout = ({ children }: RouteProps) => {
   return (
-    <>
+    <div>
       <Header links={routes} shouldUnderline />
       {children}
       <Footer shouldUnderline />
-    </>
+    </div>
   );
 };
