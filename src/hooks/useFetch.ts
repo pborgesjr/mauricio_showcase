@@ -1,45 +1,32 @@
-import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { useState, useEffect } from "react";
-import { ImageItem } from "../constants";
-import { storage } from "../firebase";
-import { formatFileName } from "../utils";
+import { ImageType } from "../constants";
+import { fetchImages } from "../services";
 
-export const useFetch = (path?: string) => {
+export const useFetch = (folder: string) => {
   let ignore = false;
   const INITIAL_VALUE = () => [];
 
-  const [imageList, setImageList] = useState<Array<ImageItem>>(INITIAL_VALUE);
-  const imagesRef = ref(storage, `images/${path}`);
+  const [imageList, setImageList] = useState<Array<ImageType>>(INITIAL_VALUE);
 
-  const fetchAll = async () => {
+  const handleFetchImages = async () => {
     if (!ignore) {
-      const { items } = await listAll(imagesRef);
+      const response = await fetchImages(folder);
 
-      if (items) {
-        items.map(async (item) => {
-          const url = await getDownloadURL(item);
-          setImageList((prevState) => [
-            ...prevState,
-            {
-              name: formatFileName(item.name),
-              url,
-              prefix: item.parent?.name,
-            },
-          ]);
-        });
+      if (response) {
+        setImageList(response);
       }
     }
   };
 
   useEffect(() => {
-    if (path) {
-      fetchAll();
+    if (folder) {
+      handleFetchImages();
     }
 
     return () => {
       ignore = true;
     };
-  }, [path]);
+  }, [folder]);
 
   return imageList;
 };

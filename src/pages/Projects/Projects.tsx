@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
   Modal,
@@ -8,6 +8,13 @@ import {
 } from "../../components";
 
 import styles from "./styles.module.scss";
+import {
+  AdvancedImage,
+  lazyload,
+  placeholder,
+  responsive,
+} from "@cloudinary/react";
+import { fetchImages, transformImage } from "../../services";
 import { useFetch } from "../../hooks";
 
 export const Projects = () => {
@@ -15,18 +22,20 @@ export const Projects = () => {
 
   const modalRef = useRef(null);
 
-  const handleSelectProject = (path: string) => {
-    setSelectedProject(path);
+  const handleSelectProject = async (path: string) => {
+    const images = await fetchImages(path);
+
+    setSelectedProject(images);
+
     modalRef?.current?.openModal();
   };
 
-  const categoriesImageList = useFetch("projetos");
-  const selectedProjectImages = useFetch(selectedProject);
+  const allImages = useFetch("projects");
 
   return (
     <>
       <div className={styles.topVideoWrapper}>
-        <ResponsiveVideoPlayer
+        {/*      <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
           playing={false}
@@ -34,25 +43,22 @@ export const Projects = () => {
           volume={0}
           loop
           containerStyles={styles.frozenPlayer}
-        />
+        /> */}
       </div>
 
       <div className={styles.imageList}>
-        {categoriesImageList.map((image) => (
+        {allImages.map((image, index) => (
           <button
-            key={image.name}
+            key={index}
             className={styles.pictureButton}
-            onClick={() => handleSelectProject(image.name)}
+            onClick={() => handleSelectProject(image.filename)}
           >
-            <img
-              src={image.url}
-              width={570}
-              height={320}
-              alt={image.prefix || image.name}
-              loading="lazy"
+            <AdvancedImage
+              cldImg={transformImage(image.publicId)}
+              plugins={[lazyload(), responsive({ steps: 200 }), placeholder()]}
             />
             <Typography
-              text={image.name}
+              text={image.filename}
               type="body"
               customContainerStyles={styles.captionWrapper}
             />
@@ -61,16 +67,16 @@ export const Projects = () => {
       </div>
 
       <div className={styles.bottomVideoWrapper}>
-        <ResponsiveVideoPlayer
+        {/*   <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
           playing={false}
           volume={0}
           loop
-        />
+        /> */}
       </div>
       <Modal ref={modalRef}>
-        <Slider images={selectedProjectImages} />
+        <Slider images={selectedProject} />
       </Modal>
     </>
   );

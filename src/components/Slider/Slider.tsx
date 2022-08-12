@@ -1,11 +1,13 @@
+import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import React, { useState } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { ImageItem } from "../../constants";
+import { ImageType } from "../../constants";
+import { transformImage } from "../../services";
 
 import "./styles.scss";
 
 interface SliderProps {
-  images?: ImageItem[];
+  images?: ImageType[];
 }
 
 type ButtonType = "prev" | "next";
@@ -41,7 +43,12 @@ export const Slider = ({ images }: SliderProps) => {
       </button>
 
       <div>
-        {images && images?.[position] && <img src={images[position].url} />}
+        {images && (
+          <AdvancedImage
+            cldImg={transformImage(images[position].publicId)}
+            plugins={[lazyload(), placeholder({ mode: "blur" })]}
+          />
+        )}
       </div>
 
       <button

@@ -1,7 +1,13 @@
 @use "../../styles/_colors.scss" as colors;
 
-.wrapper {
+.container {
   background-color: colors.$white100;
+}
+
+.wrapper {
+  //TODO: criar mixin para esse estilo de max-width e margin
+  max-width: 1366px;
+  margin: 0 auto;
   padding: 205px 170px 0;
 }
 
@@ -35,8 +41,7 @@
   img {
     display: block;
     width: 100%;
-    max-width: 345px;
-    max-height: 345px;
+    height: auto;
     object-fit: cover;
   }
 
