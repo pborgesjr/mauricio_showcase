@@ -8,6 +8,8 @@
 }
 
 body {
+  max-width: 1366px;
+  margin: 0 auto;
   color: colors.$white90;
   background: colors.$black80;
 }

@@ -1,0 +1,39 @@
+@use "../../styles/_colors.scss" as colors;
+
+.container {
+  position: relative;
+  button {
+    border: none;
+    background-color: transparent;
+
+    &:disabled {
+      opacity: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+}
+
+.image-wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.prev-button {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.next-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}

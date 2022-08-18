@@ -32,14 +32,6 @@
     }
   }
 
-  img {
-    display: block;
-    width: 100%;
-    max-width: 345px;
-    max-height: 345px;
-    object-fit: cover;
-  }
-
   #right-image {
     float: right;
     margin-left: 80px;
@@ -49,6 +41,19 @@
     float: left;
     margin-right: 80px;
   }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 345px;
+  max-height: 345px;
+  object-fit: cover;
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
 }
 
 .brand {
@@ -66,4 +71,8 @@
     border-radius: 4px;
     margin-left: 12px;
   }
+}
+
+.easeLoad {
+  opacity: 1;
 }
