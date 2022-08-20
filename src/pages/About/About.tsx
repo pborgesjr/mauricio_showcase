@@ -4,17 +4,22 @@ import { big_image } from "../../assets";
 import "./styles.scss";
 
 export const About = () => {
+  const addClassName = (id: string) => {
+    document.getElementById(id)?.classList.add("easeLoad");
+  };
+
   return (
     <>
       <div className="wrapper">
         <div className="item">
           <article>
             <img
+              onLoad={() => addClassName("right-image")}
               src={big_image}
+              className={"image"}
               id="right-image"
               width={345}
               height={345}
-              loading="lazy"
             />
             <div>
               <h1>Maurício Alves</h1>
@@ -44,10 +49,11 @@ export const About = () => {
           <article>
             <img
               src={big_image}
+              className={"image"}
+              onLoad={() => addClassName("left-image")}
               id="left-image"
               width={345}
               height={345}
-              loading="lazy"
             />
             <div>
               <h1>Lorem ipsum</h1>

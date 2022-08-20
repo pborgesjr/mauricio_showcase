@@ -3,15 +3,15 @@ import { IoIosClose } from "react-icons/io";
 
 import "./styles.scss";
 
-interface FloatingImageProps {
-  path: string;
+interface ModalProps {
+  children: JSX.Element;
 }
 
-export const FloatingImage = forwardRef(({ path }: FloatingImageProps, ref) => {
-  const [isOpened, setIsOpened] = useState(false);
+export const Modal = forwardRef(({ children }: ModalProps, ref) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleVisibility = (visibility?: boolean) => {
-    setIsOpened((prevState) => visibility || !prevState);
+    setIsOpen((prevState) => visibility || !prevState);
   };
 
   useImperativeHandle(ref, () => ({
@@ -19,15 +19,17 @@ export const FloatingImage = forwardRef(({ path }: FloatingImageProps, ref) => {
     closeModal: () => toggleVisibility(false),
   }));
 
-  return isOpened ? (
+  return isOpen ? (
     <div className="overlay">
       <div className="content">
-        <button onClick={() => toggleVisibility(false)}>
+        <button
+          onClick={() => toggleVisibility(false)}
+          className="close-button"
+        >
           <IoIosClose />
         </button>
-        <div className="image-wrapper">
-          <img src={path} />
-        </div>
+
+        {children}
       </div>
     </div>
   ) : (

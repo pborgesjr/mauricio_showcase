@@ -5,10 +5,11 @@ import { storage } from "../firebase";
 import { formatFileName } from "../utils";
 
 export const useFetch = (path: string) => {
-  let ignore = false;
   const INITIAL_VALUE = () => [];
+  let ignore = false;
 
   const [imageList, setImageList] = useState<Array<ImageItem>>(INITIAL_VALUE);
+  const [isLoading, setIsLoading] = useState(true);
   const imagesRef = ref(storage, `images/${path}`);
 
   const fetchAll = async () => {
@@ -28,16 +29,22 @@ export const useFetch = (path: string) => {
           ]);
         });
       }
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
     }
   };
 
   useEffect(() => {
-    fetchAll();
+    if (path) {
+      fetchAll();
+    }
 
     return () => {
       ignore = true;
     };
   }, [path]);
 
-  return imageList;
+  return { imageList, isLoading };
 };
