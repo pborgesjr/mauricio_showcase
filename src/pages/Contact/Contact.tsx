@@ -20,7 +20,7 @@ export const Contact = () => {
         <img src={big_image} />
       </div>
 
-      <div className={styles.container}>
+      <div className="bleedSideways">
         <div className={styles.itemsContainer}>
           <Typography text={name} type="body" customStyles={styles.title} />
           <div className={styles.contactItem}>

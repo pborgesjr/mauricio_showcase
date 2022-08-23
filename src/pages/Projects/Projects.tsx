@@ -45,31 +45,32 @@ export const Projects = () => {
         />
       </div>
 
-      <div className={styles.imageList}>
-        {imageList.map((image) => (
-          <button
-            key={image.name}
-            className={styles.picture}
-            onClick={() => handleSelectProject(image.name)}
-          >
-            <img
-              src={image.url}
-              id={image.name}
-              className={styles.image}
-              onLoad={() => addClassName(image.name)}
-              width={392}
-              height={320}
-              alt={image.prefix || image.name}
-            />
-            <Typography
-              text={image.name}
-              type="body"
-              customContainerStyles={styles.captionWrapper}
-            />
-          </button>
-        ))}
+      <div className="bleedSideways">
+        <div className={styles.imageList}>
+          {imageList.map((image) => (
+            <button
+              key={image.name}
+              className={styles.picture}
+              onClick={() => handleSelectProject(image.name)}
+            >
+              <img
+                src={image.url}
+                id={image.name}
+                className={styles.image}
+                onLoad={() => addClassName(image.name)}
+                width={392}
+                height={320}
+                alt={image.prefix || image.name}
+              />
+              <Typography
+                text={image.name}
+                type="body"
+                customContainerStyles={styles.captionWrapper}
+              />
+            </button>
+          ))}
+        </div>
       </div>
-
       <div className={styles.bottomVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"

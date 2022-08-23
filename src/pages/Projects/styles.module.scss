@@ -19,7 +19,6 @@
   flex-wrap: wrap;
   gap: metrics.$space_5;
   padding: metrics.$space_48 metrics.$space_83;
-  background-color: colors.$white100;
 
   @media screen and (max-width: 768px) {
     padding: metrics.$space_48 0;
