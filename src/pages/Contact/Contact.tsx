@@ -1,6 +1,7 @@
 import React from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import { big_image } from "../../assets";
 
 import { Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
@@ -15,6 +16,10 @@ export const Contact = () => {
 
   return (
     <>
+      <div className="image-wrapper">
+        <img src={big_image} />
+      </div>
+
       <div className="container">
         <div className="items-container">
           <Typography text={name} type="body" customStyles="title" />

@@ -1,25 +1,46 @@
 @use "../../styles/_colors.scss" as colors;
+@use "../../styles/_metrics.scss" as metrics;
+
+.image-wrapper {
+  position: relative;
+  z-index: 5;
+  margin-left: metrics.$space_83;
+  margin-bottom: metrics.$space_43 * -1;
+
+  img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}
 
 .container {
   display: flex;
 
   svg {
     color: colors.$black100;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   span {
     color: colors.$black100;
   }
 }
+
 .title {
   font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
 }
 
 .body {
   font-family: "Quicksand", sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 .items-container {
@@ -31,6 +52,14 @@
   padding: 200px 0 130px 170px;
 
   background-color: colors.$white100;
+
+  @media (max-width: 768px) {
+    padding: 70px 0 70px 70px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 70px 20px;
+  }
 }
 
 .contact-item {

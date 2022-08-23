@@ -18,15 +18,17 @@ export const Footer = ({ shouldUnderline }: FooterProps) => {
     <footer>
       <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
-      <LinkAggregator links={routes} shouldUnderline={shouldUnderline} />
+      <div className="links">
+        <LinkAggregator links={routes} shouldUnderline={shouldUnderline} />
+      </div>
 
       <section>
         <a href={whatsAppLink} rel="external" target="_blank">
-          <FaWhatsapp size={40} />
+          <FaWhatsapp size={35} />
         </a>
 
         <a href={instagramLink} rel="external" target="_blank">
-          <FaInstagram size={40} />
+          <FaInstagram size={35} />
         </a>
       </section>
     </footer>

@@ -4,7 +4,6 @@ import {
   ResponsiveVideoPlayer,
   Typography,
   Modal,
-  Slider,
   Carousel,
 } from "../../components";
 
@@ -14,7 +13,7 @@ import { useFetch } from "../../hooks";
 export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<string>();
 
-  const { imageList, isLoading } = useFetch("projetos");
+  const { imageList } = useFetch("projetos");
 
   const { imageList: selectedProjectImages } = useFetch(selectedProject);
 
@@ -31,17 +30,17 @@ export const Projects = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
-          playing={false}
+          playing={true}
           controls={false}
           width={1280}
           height={720}
           volume={0}
-          loop
+          loop={true}
           containerStyles={styles.frozenPlayer}
         />
       </div>
@@ -86,6 +85,6 @@ export const Projects = () => {
       <Modal ref={modalRef}>
         <Carousel images={selectedProjectImages} />
       </Modal>
-    </div>
+    </>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
-import { big_image } from "../../assets";
+import { big_image, contact } from "../../assets";
+import { Carousel, ResponsiveVideoPlayer } from "../../components";
 
 import "./styles.scss";
 
@@ -10,6 +11,22 @@ export const About = () => {
 
   return (
     <>
+      <div className="carousel-wrapper">
+        <Carousel
+          //infiniteLoop
+          //autoPlay
+          showArrows={false}
+          interval={11000}
+          transitionTime={5000}
+          images={[
+            // { url: big_image, name: "1" },
+            { url: contact, name: "2" },
+            //{ url: big_image, name: "3" },
+            //{ url: contact, name: "4" },
+          ]}
+        />
+      </div>
+
       <div className="wrapper">
         <div className="item">
           <article>
@@ -19,7 +36,7 @@ export const About = () => {
               className={"image"}
               id="right-image"
               width={345}
-              height={345}
+              height={400}
             />
             <div>
               <h1>Maurício Alves</h1>
@@ -40,7 +57,7 @@ export const About = () => {
               adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
               laoreet dolore. Ex ea commodo consequat. Lorem ipsum dolor sit
               amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-              tincidunt ut laoreet dolore.{" "}
+              tincidunt ut laoreet dolore.
             </p>
           </article>
         </div>
@@ -53,7 +70,7 @@ export const About = () => {
               onLoad={() => addClassName("left-image")}
               id="left-image"
               width={345}
-              height={345}
+              height={400}
             />
             <div>
               <h1>Lorem ipsum</h1>
