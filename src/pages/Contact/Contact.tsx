@@ -7,7 +7,7 @@ import { Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
 import { getLocale } from "../../locale";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 export const Contact = () => {
   const {
@@ -16,30 +16,38 @@ export const Contact = () => {
 
   return (
     <>
-      <div className="image-wrapper">
+      <div className={styles.imageWrapper}>
         <img src={big_image} />
       </div>
 
-      <div className="container">
-        <div className="items-container">
-          <Typography text={name} type="body" customStyles="title" />
-          <div className="contact-item">
+      <div className={styles.container}>
+        <div className={styles.itemsContainer}>
+          <Typography text={name} type="body" customStyles={styles.title} />
+          <div className={styles.contactItem}>
             <MdOutlineMail />
-            <Typography type="body" text={email} customStyles="body" />
+            <Typography type="body" text={email} customStyles={styles.body} />
           </div>
 
-          <div className="contact-item">
+          <div className={styles.contactItem}>
             <a href={whatsAppLink} rel="external" target="_blank">
               <FaWhatsapp />
             </a>
-            <Typography type="body" text={phoneNumber} customStyles="body" />
+            <Typography
+              type="body"
+              text={phoneNumber}
+              customStyles={styles.body}
+            />
           </div>
 
-          <div className="contact-item">
+          <div className={styles.contactItem}>
             <a href={instagramLink} rel="external" target="_blank">
               <FaInstagram />
             </a>
-            <Typography type="body" text={instagramId} customStyles="body" />
+            <Typography
+              type="body"
+              text={instagramId}
+              customStyles={styles.body}
+            />
           </div>
         </div>
       </div>

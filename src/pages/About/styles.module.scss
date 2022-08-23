@@ -1,7 +1,7 @@
 @use "../../styles/_colors.scss" as colors;
 @use "../../styles/_metrics.scss" as metrics;
 
-.carousel-wrapper {
+.carouselWrapper {
   margin-left: metrics.$space_83;
   margin-bottom: metrics.$space_43 * -1;
 
@@ -68,12 +68,12 @@
   }
 
   @media (min-width: 768px) {
-    #right-image {
+    .rightImage {
       float: right;
       margin-left: 80px;
     }
 
-    #left-image {
+    .leftImage {
       float: left;
       margin-right: 80px;
     }

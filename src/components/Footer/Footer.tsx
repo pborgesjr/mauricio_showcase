@@ -6,7 +6,7 @@ import { instagramLink, whatsAppLink } from "../../constants";
 import { getLocale } from "../../locale";
 import { routes } from "../../routes";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 interface FooterProps {
   shouldUnderline?: boolean;
@@ -18,7 +18,7 @@ export const Footer = ({ shouldUnderline }: FooterProps) => {
     <footer>
       <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
-      <div className="links">
+      <div className={styles.links}>
         <LinkAggregator links={routes} shouldUnderline={shouldUnderline} />
       </div>
 

@@ -26,7 +26,7 @@ export const Projects = () => {
   };
 
   const addClassName = (id: string) => {
-    document.getElementById(id)?.classList.add("easeLoad");
+    document.getElementById(id)?.classList.add(styles.easeLoad);
   };
 
   return (

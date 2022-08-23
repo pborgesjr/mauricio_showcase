@@ -4,7 +4,7 @@ import { Carousel as RRCarousel } from "react-responsive-carousel";
 
 import { ImageItem } from "../../constants";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface CarouselProps {
@@ -29,7 +29,7 @@ export const Carousel = ({
       <button
         disabled={!hasPrev}
         onClick={clickHandler}
-        className="carousel-button prev-button"
+        className={`${styles.carouselButton} ${styles.prevButton}`}
       >
         <BsChevronLeft color="white" size={50} />
       </button>
@@ -41,7 +41,7 @@ export const Carousel = ({
       <button
         disabled={!hasNext}
         onClick={clickHandler}
-        className="carousel-button next-button"
+        className={`${styles.carouselButton} ${styles.nextButton}`}
       >
         <BsChevronRight color="white" size={50} />
       </button>
@@ -58,14 +58,14 @@ export const Carousel = ({
       showIndicators={false}
       showThumbs={false}
       showStatus={false}
-      className="container"
+      className={styles.container}
       swipeable={false}
       renderArrowPrev={renderPrevArrow}
       renderArrowNext={renderNextArrow}
     >
       {images &&
         images.map((item, index) => (
-          <div className="image-wrapper">
+          <div className={styles.imageWrapper}>
             <img src={item.url} loading={`${index > 0 ? "lazy" : "eager"}`} />
           </div>
         ))}

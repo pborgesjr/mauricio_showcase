@@ -19,13 +19,13 @@
   }
 }
 
-.image-wrapper {
+.imageWrapper {
   //max-width: 90%;
   //TODO: passar para screen
   margin: 0 auto;
 }
 
-.carousel-button {
+.carouselButton {
   position: absolute;
   top: 0;
   height: 100%;
@@ -35,10 +35,10 @@
   }
 }
 
-.prev-button {
+.prevButton {
   z-index: 5;
   left: 0;
 }
-.next-button {
+.nextButton {
   right: 0;
 }

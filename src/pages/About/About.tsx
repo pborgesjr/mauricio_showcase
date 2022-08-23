@@ -1,17 +1,17 @@
 import React from "react";
 import { big_image, contact } from "../../assets";
-import { Carousel, ResponsiveVideoPlayer } from "../../components";
+import { Carousel } from "../../components";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 export const About = () => {
   const addClassName = (id: string) => {
-    document.getElementById(id)?.classList.add("easeLoad");
+    document.getElementById(id)?.classList.add(styles.easeLoad);
   };
 
   return (
     <>
-      <div className="carousel-wrapper">
+      <div className={styles.carouselWrapper}>
         <Carousel
           //infiniteLoop
           //autoPlay
@@ -27,20 +27,20 @@ export const About = () => {
         />
       </div>
 
-      <div className="wrapper">
-        <div className="item">
+      <div className={styles.wrapper}>
+        <div className={styles.item}>
           <article>
             <img
-              onLoad={() => addClassName("right-image")}
               src={big_image}
-              className={"image"}
-              id="right-image"
+              id={"1"}
+              className={`${styles.image} ${styles.rightImage}`}
               width={345}
+              onLoad={() => addClassName("1")}
               height={400}
             />
             <div>
               <h1>Maurício Alves</h1>
-              <div className="brand">
+              <div className={styles.brand}>
                 <h1>Archviz</h1>
                 <div />
               </div>
@@ -62,19 +62,19 @@ export const About = () => {
           </article>
         </div>
 
-        <div className="item">
+        <div className={styles.item}>
           <article>
             <img
               src={big_image}
-              className={"image"}
-              onLoad={() => addClassName("left-image")}
-              id="left-image"
+              id={"2"}
+              onLoad={() => addClassName("2")}
+              className={`${styles.image} ${styles.leftImage}`}
               width={345}
               height={400}
             />
             <div>
               <h1>Lorem ipsum</h1>
-              <div className="brand">
+              <div className={styles.brand}>
                 <h1>dolor</h1>
                 <div />
               </div>
