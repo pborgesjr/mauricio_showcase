@@ -9,6 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface CarouselProps {
   images: ImageItem[];
+  isLoading?: boolean;
   infiniteLoop?: boolean;
   autoPlay?: boolean;
   showArrows?: boolean;
@@ -18,6 +19,7 @@ interface CarouselProps {
 
 export const Carousel = ({
   images,
+  isLoading,
   infiniteLoop,
   autoPlay,
   showArrows = true,
@@ -48,7 +50,9 @@ export const Carousel = ({
     );
   };
 
-  return (
+  return isLoading ? (
+    <></>
+  ) : (
     <RRCarousel
       infiniteLoop={infiniteLoop}
       autoPlay={autoPlay}
@@ -65,7 +69,7 @@ export const Carousel = ({
     >
       {images &&
         images.map((item, index) => (
-          <div className={styles.imageWrapper}>
+          <div className={styles.imageWrapper} key={index}>
             <img src={item.url} loading={`${index > 0 ? "lazy" : "eager"}`} />
           </div>
         ))}

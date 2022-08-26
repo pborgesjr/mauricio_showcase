@@ -5,6 +5,7 @@ import { big_image } from "../../assets";
 
 import { Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
+import { useFetch } from "../../hooks";
 import { getLocale } from "../../locale";
 
 import styles from "./styles.module.scss";
@@ -14,10 +15,14 @@ export const Contact = () => {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
+  const { imageList } = useFetch("contact");
+
   return (
     <>
       <div className={styles.imageWrapper}>
-        <img src={big_image} />
+        {imageList.length > 0 && (
+          <img src={imageList[0].url} alt={imageList[0].name} />
+        )}
       </div>
 
       <div className="bleedSideways">
