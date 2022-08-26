@@ -4,7 +4,6 @@ import {
   ResponsiveVideoPlayer,
   Typography,
   Modal,
-  Slider,
   Carousel,
 } from "../../components";
 
@@ -14,7 +13,7 @@ import { useFetch } from "../../hooks";
 export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<string>();
 
-  const { imageList, isLoading } = useFetch("projetos");
+  const { imageList } = useFetch("projetos");
 
   const { imageList: selectedProjectImages } = useFetch(selectedProject);
 
@@ -27,50 +26,51 @@ export const Projects = () => {
   };
 
   const addClassName = (id: string) => {
-    document.getElementById(id)?.classList.add("easeLoad");
+    document.getElementById(id)?.classList.add(styles.easeLoad);
   };
 
   return (
-    <div>
+    <>
       <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
           muted
-          playing={false}
+          playing={true}
           controls={false}
           width={1280}
           height={720}
           volume={0}
-          loop
+          loop={true}
           containerStyles={styles.frozenPlayer}
         />
       </div>
 
-      <div className={styles.imageList}>
-        {imageList.map((image) => (
-          <button
-            key={image.name}
-            className={styles.picture}
-            onClick={() => handleSelectProject(image.name)}
-          >
-            <img
-              src={image.url}
-              id={image.name}
-              className={styles.image}
-              onLoad={() => addClassName(image.name)}
-              width={392}
-              height={320}
-              alt={image.prefix || image.name}
-            />
-            <Typography
-              text={image.name}
-              type="body"
-              customContainerStyles={styles.captionWrapper}
-            />
-          </button>
-        ))}
+      <div className="bleedSideways">
+        <div className={styles.imageList}>
+          {imageList.map((image) => (
+            <button
+              key={image.name}
+              className={styles.picture}
+              onClick={() => handleSelectProject(image.name)}
+            >
+              <img
+                src={image.url}
+                id={image.name}
+                className={styles.image}
+                onLoad={() => addClassName(image.name)}
+                width={392}
+                height={320}
+                alt={image.prefix || image.name}
+              />
+              <Typography
+                text={image.name}
+                type="body"
+                customContainerStyles={styles.captionWrapper}
+              />
+            </button>
+          ))}
+        </div>
       </div>
-
       <div className={styles.bottomVideoWrapper}>
         <ResponsiveVideoPlayer
           url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
@@ -86,6 +86,6 @@ export const Projects = () => {
       <Modal ref={modalRef}>
         <Carousel images={selectedProjectImages} />
       </Modal>
-    </div>
+    </>
   );
 };

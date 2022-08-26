@@ -1,7 +1,7 @@
 import React, { useState, useImperativeHandle, forwardRef } from "react";
 import { IoIosClose } from "react-icons/io";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 interface ModalProps {
   children: JSX.Element;
@@ -20,11 +20,11 @@ export const Modal = forwardRef(({ children }: ModalProps, ref) => {
   }));
 
   return isOpen ? (
-    <div className="overlay">
-      <div className="content">
+    <div className={styles.overlay}>
+      <div className={styles.content}>
         <button
           onClick={() => toggleVisibility(false)}
-          className="close-button"
+          className={styles.closeButton}
         >
           <IoIosClose />
         </button>

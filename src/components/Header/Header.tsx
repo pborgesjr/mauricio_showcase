@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { LinkAggregator } from "..";
-import { IoMdReorder, IoIosClose } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
+import { MdOutlineMenu } from "react-icons/md";
 
 import styles from "./styles.module.scss";
 import { app_logo } from "../../assets";
@@ -29,10 +30,7 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
       <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
       <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
-        <button
-          onClick={handleToggleMenu}
-          className={`${styles.button} ${isMobileMenu && styles.closeButton}`}
-        >
+        <button onClick={handleToggleMenu} className={styles.button}>
           <IoIosClose />
         </button>
 
@@ -44,7 +42,7 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
       </div>
 
       <button onClick={handleToggleMenu} className={`${styles.button}`}>
-        <IoMdReorder />
+        <MdOutlineMenu />
       </button>
     </header>
   );

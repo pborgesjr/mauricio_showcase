@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player/youtube";
 import { BaseReactPlayerProps } from "react-player/base";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 interface ResponsiveVideoPlayerProps extends BaseReactPlayerProps {
   containerStyles?: string;
@@ -13,7 +13,7 @@ export const ResponsiveVideoPlayer = ({
   ...rest
 }: ResponsiveVideoPlayerProps) => {
   return (
-    <div className={`player-wrapper ${containerStyles}`}>
+    <div className={`${styles.playerWrapper} ${containerStyles}`}>
       <ReactPlayer
         {...rest}
         style={{

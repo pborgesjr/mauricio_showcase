@@ -4,20 +4,34 @@ import { Carousel as RRCarousel } from "react-responsive-carousel";
 
 import { ImageItem } from "../../constants";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface CarouselProps {
   images: ImageItem[];
+  isLoading?: boolean;
+  infiniteLoop?: boolean;
+  autoPlay?: boolean;
+  showArrows?: boolean;
+  interval?: number;
+  transitionTime?: number;
 }
 
-export const Carousel = ({ images }: CarouselProps) => {
+export const Carousel = ({
+  images,
+  isLoading,
+  infiniteLoop,
+  autoPlay,
+  showArrows = true,
+  interval,
+  transitionTime,
+}: CarouselProps) => {
   const renderPrevArrow = (clickHandler: () => void, hasPrev: boolean) => {
     return (
       <button
         disabled={!hasPrev}
         onClick={clickHandler}
-        className="prev-button"
+        className={`${styles.carouselButton} ${styles.prevButton}`}
       >
         <BsChevronLeft color="white" size={50} />
       </button>
@@ -29,25 +43,33 @@ export const Carousel = ({ images }: CarouselProps) => {
       <button
         disabled={!hasNext}
         onClick={clickHandler}
-        className="next-button"
+        className={`${styles.carouselButton} ${styles.nextButton}`}
       >
         <BsChevronRight color="white" size={50} />
       </button>
     );
   };
 
-  return (
+  return isLoading ? (
+    <></>
+  ) : (
     <RRCarousel
+      infiniteLoop={infiniteLoop}
+      autoPlay={autoPlay}
+      showArrows={showArrows}
+      interval={interval}
+      transitionTime={transitionTime}
       showIndicators={false}
       showThumbs={false}
       showStatus={false}
-      className="container"
+      className={styles.container}
+      swipeable={false}
       renderArrowPrev={renderPrevArrow}
       renderArrowNext={renderNextArrow}
     >
       {images &&
         images.map((item, index) => (
-          <div className="image-wrapper">
+          <div className={styles.imageWrapper} key={index}>
             <img src={item.url} loading={`${index > 0 ? "lazy" : "eager"}`} />
           </div>
         ))}

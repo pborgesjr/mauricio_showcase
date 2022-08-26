@@ -14,6 +14,17 @@ body {
   background: colors.$black80;
 }
 
+.bleedSideways {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background-color: colors.$white100;
+
+  > div {
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+}
+
 h1,
 span {
   font-family: "Montserrat", sans-serif;

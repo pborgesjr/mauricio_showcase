@@ -19,21 +19,26 @@
   }
 }
 
-.image-wrapper {
-  max-width: 90%;
+.imageWrapper {
+  //max-width: 90%;
+  //TODO: passar para screen
   margin: 0 auto;
 }
 
-.prev-button {
+.carouselButton {
   position: absolute;
-  z-index: 5;
   top: 0;
-  left: 0;
   height: 100%;
+
+  &:hover:enabled {
+    cursor: pointer;
+  }
 }
-.next-button {
-  position: absolute;
-  top: 0;
+
+.prevButton {
+  z-index: 5;
+  left: 0;
+}
+.nextButton {
   right: 0;
-  height: 100%;
 }
