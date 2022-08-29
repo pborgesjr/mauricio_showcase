@@ -8,16 +8,16 @@ import {
 } from "../../components";
 
 import styles from "./styles.module.scss";
-import { useFetch } from "../../hooks";
+import { useCustomQuery } from "../../hooks";
 
 export const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<string>();
-
-  const { imageList } = useFetch("projetos");
-
-  const { imageList: selectedProjectImages } = useFetch(selectedProject);
-
   const modalRef = useRef(null);
+  const [selectedProject, setSelectedProject] = useState<string>("none");
+
+  const { data: projectsImageList, isFetching: isFetchingProjectsImageList } =
+    useCustomQuery("projetos");
+
+  const { data } = useCustomQuery(selectedProject, selectedProject !== "none");
 
   const handleSelectProject = async (path: string) => {
     setSelectedProject(path);
@@ -47,28 +47,29 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {imageList.map((image) => (
-            <button
-              key={image.name}
-              className={styles.picture}
-              onClick={() => handleSelectProject(image.name)}
-            >
-              <img
-                src={image.url}
-                id={image.name}
-                className={styles.image}
-                onLoad={() => addClassName(image.name)}
-                width={392}
-                height={320}
-                alt={image.prefix || image.name}
-              />
-              <Typography
-                text={image.name}
-                type="body"
-                customContainerStyles={styles.captionWrapper}
-              />
-            </button>
-          ))}
+          {projectsImageList &&
+            projectsImageList.map((image) => (
+              <button
+                key={image.name}
+                className={styles.picture}
+                onClick={() => handleSelectProject(image.name)}
+              >
+                <img
+                  src={image.url}
+                  id={image.name}
+                  className={styles.image}
+                  onLoad={() => addClassName(image.name)}
+                  width={392}
+                  height={320}
+                  alt={image.prefix || image.name}
+                />
+                <Typography
+                  text={image.name}
+                  type="body"
+                  customContainerStyles={styles.captionWrapper}
+                />
+              </button>
+            ))}
         </div>
       </div>
       <div className={styles.bottomVideoWrapper}>
@@ -84,7 +85,7 @@ export const Projects = () => {
       </div>
 
       <Modal ref={modalRef}>
-        <Carousel images={selectedProjectImages} />
+        <Carousel images={data} />
       </Modal>
     </>
   );
