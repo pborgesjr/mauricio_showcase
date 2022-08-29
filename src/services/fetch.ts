@@ -1,11 +1,11 @@
-import { getDownloadURL, listAll, StorageReference } from "firebase/storage";
+import { listAll, ref } from "firebase/storage";
 import { ImageItem } from "../constants";
+import { storage } from "../firebase";
 import { formatFileName } from "../utils";
+import { buildURL } from "../utils/buildURL";
 
-export const fetchAll = async (
-  imagesRef: StorageReference,
-  ignore?: boolean
-) => {
+export const fetchAll = async (path: string, ignore?: boolean) => {
+  const imagesRef = ref(storage, `images/${path}`);
   let result: Array<ImageItem> = [];
 
   if (!ignore) {
@@ -13,21 +13,11 @@ export const fetchAll = async (
 
     if (items) {
       items.map(async (item) => {
-        const url = await getDownloadURL(item);
-
         result.push({
           name: formatFileName(item.name),
-          url,
+          url: buildURL(item),
           prefix: item.parent?.name,
         });
-        /* setImageList((prevState) => [
-          ...prevState,
-          {
-            name: formatFileName(item.name),
-            url,
-            prefix: item.parent?.name,
-          },
-        ]); */
       });
     }
   }

@@ -1,7 +1,6 @@
 import React from "react";
-import { big_image } from "../../assets";
 import { Carousel } from "../../components";
-import { useFetch } from "../../hooks";
+import { useCustomQuery } from "../../hooks";
 
 import styles from "./styles.module.scss";
 
@@ -10,7 +9,10 @@ export const About = () => {
     document.getElementById(id)?.classList.add(styles.easeLoad);
   };
 
-  const { imageList, isLoading } = useFetch("about");
+  const { data: aboutImageList, isFetching: isFetchingAboutImageList } =
+    useCustomQuery("about");
+  const { data: profileImageList, isFetching: isFetchingProfileImageList } =
+    useCustomQuery("profile");
 
   return (
     <>
@@ -21,8 +23,9 @@ export const About = () => {
           showArrows={false}
           interval={11000}
           transitionTime={5000}
-          images={imageList}
-          isLoading={isLoading}
+          //TODO: fix images type to accept undefined values aswell
+          images={aboutImageList}
+          isLoading={isFetchingAboutImageList}
         />
       </div>
       <div className="bleedSideways">
@@ -30,11 +33,11 @@ export const About = () => {
           <div className={styles.item}>
             <article>
               <img
-                src={big_image}
-                id={"1"}
+                src={profileImageList?.[0].url}
+                id={"0"}
                 className={`${styles.image} ${styles.rightImage}`}
                 width={345}
-                onLoad={() => addClassName("1")}
+                onLoad={() => addClassName("0")}
                 height={400}
               />
               <div>
@@ -64,9 +67,9 @@ export const About = () => {
           <div className={styles.item}>
             <article>
               <img
-                src={big_image}
-                id={"2"}
-                onLoad={() => addClassName("2")}
+                src={profileImageList?.[1].url}
+                id={"1"}
+                onLoad={() => addClassName("1")}
                 className={`${styles.image} ${styles.leftImage}`}
                 width={345}
                 height={400}
