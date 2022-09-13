@@ -6,9 +6,10 @@ import { ImageItem } from "../../constants";
 
 import styles from "./styles.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Skeleton } from "../Skeleton/Skeleton";
 
 interface CarouselProps {
-  images: ImageItem[];
+  images?: ImageItem[];
   isLoading?: boolean;
   infiniteLoop?: boolean;
   autoPlay?: boolean;
@@ -51,7 +52,7 @@ export const Carousel = ({
   };
 
   return isLoading ? (
-    <></>
+    <Skeleton width={1280} height={720} />
   ) : (
     <RRCarousel
       infiniteLoop={infiniteLoop}

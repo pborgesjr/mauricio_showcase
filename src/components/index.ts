@@ -6,5 +6,6 @@ export { Footer } from "./Footer/Footer";
 export { DefaultLayout } from "./DefaultLayout/DefaultLayout";
 export { Modal } from "./Modal/Modal";
 export { Slider } from "./Slider/Slider";
-export { ImageSkeleton } from "./ImageSkeleton/ImageSkeleton";
 export { Carousel } from "./Carousel/Carousel";
+export { Image } from "./Image/Image";
+export { Skeleton } from "./Skeleton/Skeleton";
