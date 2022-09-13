@@ -2,7 +2,7 @@ import React from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
-import { Typography } from "../../components";
+import { Skeleton, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
 import { useCustomQuery } from "../../hooks";
 import { getLocale } from "../../locale";
@@ -18,9 +18,13 @@ export const Contact = () => {
 
   return (
     <>
-      <div className={styles.imageWrapper}>
-        {imageList && <img src={imageList[0].url} alt={imageList[0].name} />}
-      </div>
+      {isFetching ? (
+        <Skeleton width={1280} height={720} className={styles.imageWrapper} />
+      ) : (
+        <div className={styles.imageWrapper}>
+          {imageList && <img src={imageList[0].url} alt={imageList[0].name} />}
+        </div>
+      )}
 
       <div className="bleedSideways">
         <div className={styles.itemsContainer}>

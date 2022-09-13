@@ -1,6 +1,6 @@
 import { QueryClientProvider } from "react-query";
 import { Router } from "./routes";
-import { queryClient } from "./services/queryClient";
+import { queryClient } from "./services";
 
 function App() {
   return (

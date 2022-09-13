@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel } from "../../components";
+import { Carousel, Image } from "../../components";
 import { useCustomQuery } from "../../hooks";
 
 import styles from "./styles.module.scss";
@@ -23,7 +23,6 @@ export const About = () => {
           showArrows={false}
           interval={11000}
           transitionTime={5000}
-          //TODO: fix images type to accept undefined values aswell
           images={aboutImageList}
           isLoading={isFetchingAboutImageList}
         />
@@ -32,13 +31,14 @@ export const About = () => {
         <div className={styles.wrapper}>
           <div className={styles.item}>
             <article>
-              <img
+              <Image
+                width={345}
+                height={400}
+                isLoading={isFetchingProfileImageList}
                 src={profileImageList?.[0].url}
                 id={"0"}
                 className={`${styles.image} ${styles.rightImage}`}
-                width={345}
                 onLoad={() => addClassName("0")}
-                height={400}
               />
               <div>
                 <h1>Maurício Alves</h1>
@@ -66,13 +66,14 @@ export const About = () => {
 
           <div className={styles.item}>
             <article>
-              <img
-                src={profileImageList?.[1].url}
-                id={"1"}
-                onLoad={() => addClassName("1")}
-                className={`${styles.image} ${styles.leftImage}`}
+              <Image
                 width={345}
                 height={400}
+                isLoading={isFetchingProfileImageList}
+                src={profileImageList?.[1].url}
+                id={"1"}
+                className={`${styles.image} ${styles.leftImage}`}
+                onLoad={() => addClassName("1")}
               />
               <div>
                 <h1>Lorem ipsum</h1>
