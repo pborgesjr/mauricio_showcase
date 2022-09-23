@@ -14,6 +14,7 @@ interface CarouselProps {
   infiniteLoop?: boolean;
   autoPlay?: boolean;
   showArrows?: boolean;
+  fullWidth?: boolean;
   interval?: number;
   transitionTime?: number;
 }
@@ -24,6 +25,7 @@ export const Carousel = ({
   infiniteLoop,
   autoPlay,
   showArrows = true,
+  fullWidth,
   interval,
   transitionTime,
 }: CarouselProps) => {
@@ -70,7 +72,12 @@ export const Carousel = ({
     >
       {images &&
         images.map((item, index) => (
-          <div className={styles.imageWrapper} key={index}>
+          <div
+            className={`${styles.imageWrapper} ${
+              fullWidth && styles.fullWidth
+            }`}
+            key={index}
+          >
             <img src={item.url} loading={`${index > 0 ? "lazy" : "eager"}`} />
           </div>
         ))}

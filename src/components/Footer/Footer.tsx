@@ -14,12 +14,23 @@ interface FooterProps {
 
 export const Footer = ({ shouldUnderline }: FooterProps) => {
   const { brand } = getLocale();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <footer>
       <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
       <div className={styles.links}>
-        <LinkAggregator links={routes} shouldUnderline={shouldUnderline} />
+        <LinkAggregator
+          links={routes}
+          shouldUnderline={shouldUnderline}
+          callback={scrollToTop}
+        />
       </div>
 
       <section>

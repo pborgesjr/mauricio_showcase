@@ -9,6 +9,7 @@ import {
 
 import styles from "./styles.module.scss";
 import { useCustomQuery } from "../../hooks";
+import { addClassName } from "../../utils";
 
 export const Projects = () => {
   const modalRef = useRef(null);
@@ -23,10 +24,6 @@ export const Projects = () => {
     setSelectedProject(path);
 
     modalRef?.current?.openModal();
-  };
-
-  const addClassName = (id: string) => {
-    document.getElementById(id)?.classList.add(styles.easeLoad);
   };
 
   return (
@@ -58,7 +55,7 @@ export const Projects = () => {
                   src={image.url}
                   id={image.name}
                   className={styles.image}
-                  onLoad={() => addClassName(image.name)}
+                  onLoad={() => addClassName(image.name, styles.easeLoad)}
                   width={392}
                   height={320}
                   alt={image.prefix || image.name}

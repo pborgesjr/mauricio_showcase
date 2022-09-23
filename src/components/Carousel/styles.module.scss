@@ -13,8 +13,7 @@
 }
 
 .imageWrapper {
-  //max-width: 90%;
-  //TODO: passar para screen
+  max-width: 90%;
   margin: 0 auto;
 
   img {
@@ -23,6 +22,10 @@
     object-fit: contain;
     aspect-ratio: 16/9;
   }
+}
+
+.fullWidth {
+  max-width: 100%;
 }
 
 .carouselButton {

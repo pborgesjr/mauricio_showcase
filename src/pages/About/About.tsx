@@ -1,14 +1,11 @@
 import React from "react";
 import { Carousel, Image } from "../../components";
 import { useCustomQuery } from "../../hooks";
+import { addClassName } from "../../utils";
 
 import styles from "./styles.module.scss";
 
 export const About = () => {
-  const addClassName = (id: string) => {
-    document.getElementById(id)?.classList.add(styles.easeLoad);
-  };
-
   const { data: aboutImageList, isFetching: isFetchingAboutImageList } =
     useCustomQuery("about");
   const { data: profileImageList, isFetching: isFetchingProfileImageList } =
@@ -19,6 +16,7 @@ export const About = () => {
       <div className={styles.carouselWrapper}>
         <Carousel
           infiniteLoop
+          fullWidth
           autoPlay
           showArrows={false}
           interval={11000}
@@ -38,7 +36,7 @@ export const About = () => {
                 src={profileImageList?.[0].url}
                 id={"0"}
                 className={`${styles.image} ${styles.rightImage}`}
-                onLoad={() => addClassName("0")}
+                onLoad={() => addClassName("0", styles.easeLoad)}
               />
               <div>
                 <h1>Maurício Alves</h1>
@@ -73,7 +71,7 @@ export const About = () => {
                 src={profileImageList?.[1].url}
                 id={"1"}
                 className={`${styles.image} ${styles.leftImage}`}
-                onLoad={() => addClassName("1")}
+                onLoad={() => addClassName("1", styles.easeLoad)}
               />
               <div>
                 <h1>Lorem ipsum</h1>
