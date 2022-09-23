@@ -92,7 +92,7 @@ export const About = () => {
                 consectetuer adipiscing elit, sed diam nonummy nibh euismod
                 tincidunt ut laoreet dolore. Ex ea commodo consequat. Lorem
                 ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                nonummy nibh euismod tincidunt ut laoreet dolore.
+                nonummy nibh euismod tincidunt.
               </p>
             </article>
           </div>

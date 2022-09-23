@@ -3,10 +3,15 @@
 
 .topVideoWrapper {
   margin-left: metrics.$space_83;
+
   margin-bottom: metrics.$space_43 * -1;
 
   @media (max-width: 768px) {
     margin-left: 0;
+  }
+
+  @media (min-width: 1367px) {
+    margin-right: metrics.$space_83;
   }
 }
 
@@ -17,6 +22,7 @@
 .imageList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: metrics.$space_5;
   padding: metrics.$space_48 metrics.$space_83;
 
