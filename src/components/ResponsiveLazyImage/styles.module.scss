@@ -1,0 +1,35 @@
+.imageWrapper {
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  /*  aspect-ratio: attr(width) / attr(height); */
+}
+
+.blurImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+.fadeOutAnimation {
+  animation: fadeOut 0.5s ease-in forwards;
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

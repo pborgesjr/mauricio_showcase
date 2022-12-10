@@ -1,16 +1,20 @@
-import React from "react";
+import React, { ImgHTMLAttributes } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Carousel as RRCarousel } from "react-responsive-carousel";
 
-import { ImageItem } from "../../constants";
-
 import styles from "./styles.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Skeleton } from "../Skeleton/Skeleton";
+import { ResponsiveLazyImage } from "../ResponsiveLazyImage/ResponsiveLazyImage";
+import { imageSrcBuilder } from "../../utils";
+
+interface ResponsiveLazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+  blurHash: string;
+}
+//TODO: passar para types
 
 interface CarouselProps {
-  images?: ImageItem[];
-  isLoading?: boolean;
+  images?: ResponsiveLazyImageProps[];
+  hasFinished: boolean;
   infiniteLoop?: boolean;
   autoPlay?: boolean;
   showArrows?: boolean;
@@ -21,7 +25,7 @@ interface CarouselProps {
 
 export const Carousel = ({
   images,
-  isLoading,
+  hasFinished,
   infiniteLoop,
   autoPlay,
   showArrows = true,
@@ -36,7 +40,7 @@ export const Carousel = ({
         onClick={clickHandler}
         className={`${styles.carouselButton} ${styles.prevButton}`}
       >
-        <BsChevronLeft color="white" size={50} />
+        <BsChevronLeft color="white" size={40} />
       </button>
     );
   };
@@ -48,14 +52,12 @@ export const Carousel = ({
         onClick={clickHandler}
         className={`${styles.carouselButton} ${styles.nextButton}`}
       >
-        <BsChevronRight color="white" size={50} />
+        <BsChevronRight color="white" size={40} />
       </button>
     );
   };
 
-  return isLoading ? (
-    <Skeleton width={1280} height={720} />
-  ) : (
+  return (
     <RRCarousel
       infiniteLoop={infiniteLoop}
       autoPlay={autoPlay}
@@ -78,7 +80,11 @@ export const Carousel = ({
             }`}
             key={index}
           >
-            <img src={item.url} loading={`${index > 0 ? "lazy" : "eager"}`} />
+            <ResponsiveLazyImage
+              {...imageSrcBuilder(item.src)}
+              {...item}
+              hasFinished={hasFinished}
+            />
           </div>
         ))}
     </RRCarousel>

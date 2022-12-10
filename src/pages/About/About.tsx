@@ -1,15 +1,18 @@
 import React from "react";
-import { Carousel, Image } from "../../components";
-import { useCustomQuery } from "../../hooks";
-import { addClassName } from "../../utils";
+import { useQuery } from "react-query";
+import { Carousel, ResponsiveLazyImage } from "../../components";
+import { apiClient } from "../../services";
+import { MOCK_IMAGES } from "../../utils";
 
 import styles from "./styles.module.scss";
 
 export const About = () => {
-  const { data: aboutImageList, isFetching: isFetchingAboutImageList } =
-    useCustomQuery("about");
-  const { data: profileImageList, isFetching: isFetchingProfileImageList } =
-    useCustomQuery("profile");
+  const { data, isFetching, isFetched } = useQuery(
+    "random",
+    async () => await apiClient.get("")
+  );
+
+  const hasFinished = isFetched && !isFetching;
 
   return (
     <>
@@ -18,25 +21,25 @@ export const About = () => {
           infiniteLoop
           fullWidth
           autoPlay
+          hasFinished={hasFinished}
           showArrows={false}
           interval={11000}
           transitionTime={5000}
-          images={aboutImageList}
-          isLoading={isFetchingAboutImageList}
+          images={MOCK_IMAGES}
         />
       </div>
       <div className="bleedSideways">
         <div className={styles.wrapper}>
           <div className={styles.item}>
             <article>
-              <Image
+              <ResponsiveLazyImage
                 width={345}
                 height={400}
-                isLoading={isFetchingProfileImageList}
-                src={profileImageList?.[0].url}
+                blurHash={"LLKd[5?HX.X9_No#-os9pJ?brqRP"}
+                hasFinished={hasFinished}
+                src={MOCK_IMAGES[3].src}
                 id={"0"}
                 className={`${styles.image} ${styles.rightImage}`}
-                onLoad={() => addClassName("0", styles.easeLoad)}
               />
               <div>
                 <h1>Maurício Alves</h1>
@@ -64,14 +67,14 @@ export const About = () => {
 
           <div className={styles.item}>
             <article>
-              <Image
+              <ResponsiveLazyImage
                 width={345}
                 height={400}
-                isLoading={isFetchingProfileImageList}
-                src={profileImageList?.[1].url}
+                blurHash={"LLKd[5?HX.X9_No#-os9pJ?brqRP"}
+                hasFinished={hasFinished}
+                src={MOCK_IMAGES[0].src}
                 id={"1"}
                 className={`${styles.image} ${styles.leftImage}`}
-                onLoad={() => addClassName("1", styles.easeLoad)}
               />
               <div>
                 <h1>Lorem ipsum</h1>

@@ -1,11 +1,13 @@
 import React from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import { useQuery } from "react-query";
 
-import { Skeleton, Typography } from "../../components";
+import { ResponsiveLazyImage, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
-import { useCustomQuery } from "../../hooks";
 import { getLocale } from "../../locale";
+import { apiClient } from "../../services";
+import { imageSrcBuilder } from "../../utils";
 
 import styles from "./styles.module.scss";
 
@@ -14,17 +16,29 @@ export const Contact = () => {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
-  const { data: imageList, isFetching } = useCustomQuery("contact");
+  const { data, isFetched, isFetching } = useQuery(
+    "random",
+    async () => await apiClient.get(""),
+    {
+      enabled: true,
+      staleTime: 2000 * 60, // 2 minutes
+    }
+  );
+
+  const hasFinished = isFetched && !isFetching;
 
   return (
     <>
-      {isFetching ? (
-        <Skeleton width={1280} height={720} className={styles.imageWrapper} />
-      ) : (
-        <div className={styles.imageWrapper}>
-          {imageList && <img src={imageList[0].url} alt={imageList[0].name} />}
-        </div>
-      )}
+      <div className={styles.imageWrapper}>
+        <ResponsiveLazyImage
+          height="100%"
+          width="100%"
+          hasFinished={hasFinished}
+          blurHash={"LLKd[5?HX.X9_No#-os9pJ?brqRP"}
+          src={data?.data[0].urls.regular} // use normal <img> attributes as props]
+          srcSet={imageSrcBuilder(data?.data[0].urls.raw).srcSet}
+        />
+      </div>
 
       <div className="bleedSideways">
         <div className={styles.itemsContainer}>

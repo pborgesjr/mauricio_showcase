@@ -6,18 +6,11 @@
   z-index: 5;
   margin-left: metrics.$space_83;
   margin-bottom: metrics.$space_43 * -1;
-
-  img {
-    display: block;
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-  }
+  aspect-ratio: 16/9;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-bottom: 0;
+    margin-bottom: -4px;
   }
 }
 
