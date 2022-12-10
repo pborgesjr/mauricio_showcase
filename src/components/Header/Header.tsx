@@ -30,7 +30,10 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
       <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
       <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
-        <button onClick={handleToggleMenu} className={styles.button}>
+        <button
+          onClick={handleToggleMenu}
+          className={`${styles.button} ${styles.closeButton}`}
+        >
           <IoIosClose />
         </button>
 

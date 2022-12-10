@@ -63,3 +63,10 @@ header {
     align-self: flex-end;
   }
 }
+
+.closeButton {
+  svg {
+    color: colors.$white100;
+    font-size: 3rem;
+  }
+}
