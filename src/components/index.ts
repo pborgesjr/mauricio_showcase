@@ -5,8 +5,5 @@ export { Header } from "./Header/Header";
 export { Footer } from "./Footer/Footer";
 export { DefaultLayout } from "./DefaultLayout/DefaultLayout";
 export { Modal } from "./Modal/Modal";
-export { Slider } from "./Slider/Slider";
 export { Carousel } from "./Carousel/Carousel";
-export { Image } from "./Image/Image";
-export { Skeleton } from "./Skeleton/Skeleton";
 export { ResponsiveLazyImage } from "./ResponsiveLazyImage/ResponsiveLazyImage";

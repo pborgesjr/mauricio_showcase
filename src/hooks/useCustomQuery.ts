@@ -14,7 +14,7 @@ type CustomQueryParamsType = {
 export const useCustomGetQuery = ({
   queryKey = "random",
   baseURL,
-  url = "/",
+  url = "",
   enabled = true,
 }: CustomQueryParamsType) => {
   return useQuery(queryKey, () => apiClient(baseURL).get(url), {
