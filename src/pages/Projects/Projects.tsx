@@ -8,21 +8,14 @@ import {
 } from "../../components";
 
 import styles from "./styles.module.scss";
-import { useCustomQuery } from "../../hooks";
-import { addClassName } from "../../utils";
+import { addClassName, MOCK_IMAGES } from "../../utils";
 
 export const Projects = () => {
   const modalRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState<string>("none");
 
-  const { data: projectsImageList, isFetching: isFetchingProjectsImageList } =
-    useCustomQuery("projetos");
-
-  const { data } = useCustomQuery(selectedProject, selectedProject !== "none");
-
   const handleSelectProject = async (path: string) => {
-    setSelectedProject(path);
-
+    /* setSelectedProject(path); */
     modalRef?.current?.openModal();
   };
 
@@ -44,24 +37,24 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {projectsImageList &&
-            projectsImageList.map((image) => (
+          {MOCK_IMAGES &&
+            MOCK_IMAGES.map((image) => (
               <button
-                key={image.name}
+                /* key={image.name} */
                 className={styles.picture}
-                onClick={() => handleSelectProject(image.name)}
+                onClick={() => handleSelectProject("image.name")}
               >
                 <img
-                  src={image.url}
-                  id={image.name}
+                  src={image.src}
+                  /* id={image.name} */
                   className={styles.image}
-                  onLoad={() => addClassName(image.name, styles.easeLoad)}
+                  /* onLoad={() => addClassName(image.name, styles.easeLoad)} */
                   width={392}
                   height={320}
-                  alt={image.prefix || image.name}
+                  /*  alt={image.prefix || image.name} */
                 />
                 <Typography
-                  text={image.name}
+                  text={"image.name"}
                   type="body"
                   customContainerStyles={styles.captionWrapper}
                 />
@@ -82,7 +75,8 @@ export const Projects = () => {
       </div>
 
       <Modal ref={modalRef}>
-        <Carousel images={data} />
+        {/**TODO: substituir MOCK_IMAGES e hasFinished */}
+        <Carousel images={MOCK_IMAGES} hasFinished={false} />
       </Modal>
     </>
   );

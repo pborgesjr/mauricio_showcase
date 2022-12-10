@@ -1,12 +1,11 @@
 import React from "react";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
-import { useQuery } from "react-query";
 
 import { ResponsiveLazyImage, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
+import { useCustomGetQuery } from "../../hooks";
 import { getLocale } from "../../locale";
-import { apiClient } from "../../services";
 import { imageSrcBuilder } from "../../utils";
 
 import styles from "./styles.module.scss";
@@ -16,14 +15,9 @@ export const Contact = () => {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
-  const { data, isFetched, isFetching } = useQuery(
-    "random",
-    async () => await apiClient.get(""),
-    {
-      enabled: true,
-      staleTime: 2000 * 60, // 2 minutes
-    }
-  );
+  const { data, isFetching, isFetched } = useCustomGetQuery({
+    queryKey: "random",
+  });
 
   const hasFinished = isFetched && !isFetching;
 

@@ -1,16 +1,14 @@
 import React from "react";
-import { useQuery } from "react-query";
 import { Carousel, ResponsiveLazyImage } from "../../components";
-import { apiClient } from "../../services";
+import { useCustomGetQuery } from "../../hooks";
 import { MOCK_IMAGES } from "../../utils";
 
 import styles from "./styles.module.scss";
 
 export const About = () => {
-  const { data, isFetching, isFetched } = useQuery(
-    "random",
-    async () => await apiClient.get("")
-  );
+  const { data, isFetching, isFetched } = useCustomGetQuery({
+    queryKey: "random",
+  });
 
   const hasFinished = isFetched && !isFetching;
 
