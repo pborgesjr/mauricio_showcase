@@ -1,14 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
   ResponsiveVideoPlayer,
   Typography,
   Modal,
   Carousel,
+  ResponsiveLazyImage,
 } from "../../components";
 
 import styles from "./styles.module.scss";
-import { addClassName, MOCK_IMAGES } from "../../utils";
+import { addClassName, imageSrcBuilder, MOCK_IMAGES } from "../../utils";
+import { useCustomGetQuery } from "../../hooks";
 
 export const Projects = () => {
   const modalRef = useRef(null);
@@ -18,6 +20,11 @@ export const Projects = () => {
     /* setSelectedProject(path); */
     modalRef?.current?.openModal();
   };
+
+  const { data, isFetching, isFetched, isSuccess } = useCustomGetQuery({
+    queryKey: "random",
+    baseURL: "http://localhost:3333/images",
+  });
 
   return (
     <>
@@ -37,21 +44,21 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {MOCK_IMAGES &&
-            MOCK_IMAGES.map((image) => (
+          {isSuccess &&
+            data &&
+            data.data.results.map((image) => (
               <button
-                /* key={image.name} */
+                key={image.id}
                 className={styles.picture}
                 onClick={() => handleSelectProject("image.name")}
               >
-                <img
-                  src={image.src}
-                  /* id={image.name} */
-                  className={styles.image}
-                  /* onLoad={() => addClassName(image.name, styles.easeLoad)} */
-                  width={392}
-                  height={320}
-                  /*  alt={image.prefix || image.name} */
+                <ResponsiveLazyImage
+                  height="100%"
+                  width="100%"
+                  hasFinished={isFetched && !isFetching}
+                  blurHash={image.blur_hash}
+                  src={image.urls.regular} // use normal <img> attributes as props]
+                  srcSet={imageSrcBuilder(image.urls.raw).srcSet}
                 />
                 <Typography
                   text={"image.name"}
