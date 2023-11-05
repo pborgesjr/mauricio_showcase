@@ -6,7 +6,6 @@ import { ResponsiveLazyImage, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
 import { useCustomGetQuery } from "../../hooks";
 import { getLocale } from "../../locale";
-import { imageSrcBuilder } from "../../utils";
 
 import styles from "./styles.module.scss";
 
@@ -19,19 +18,10 @@ export const Contact = () => {
     queryKey: "random",
   });
 
-  const hasFinished = isFetched && !isFetching;
-
   return (
     <>
       <div className={styles.imageWrapper}>
-        <ResponsiveLazyImage
-          height="100%"
-          width="100%"
-          hasFinished={hasFinished}
-          blurHash={"LLKd[5?HX.X9_No#-os9pJ?brqRP"}
-          src={data?.data[0].urls.regular} // use normal <img> attributes as props]
-          srcSet={imageSrcBuilder(data?.data[0].urls.raw).srcSet}
-        />
+        <ResponsiveLazyImage />
       </div>
 
       <div className="bleedSideways">
