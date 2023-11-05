@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import {
   ResponsiveVideoPlayer,
@@ -11,6 +11,7 @@ import {
 import styles from "./styles.module.scss";
 import { addClassName, imageSrcBuilder, MOCK_IMAGES } from "../../utils";
 import { useCustomGetQuery } from "../../hooks";
+import { mockProjects } from "../../utils/mockProjects";
 
 export const Projects = () => {
   const modalRef = useRef(null);
@@ -44,29 +45,25 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {isSuccess &&
-            data &&
-            data.data.results.map((image) => (
-              <button
-                key={image.id}
-                className={styles.picture}
-                onClick={() => handleSelectProject("image.name")}
-              >
-                <ResponsiveLazyImage
-                  height="100%"
-                  width="100%"
-                  hasFinished={isFetched && !isFetching}
-                  blurHash={image.blur_hash}
-                  src={image.urls.regular} // use normal <img> attributes as props]
-                  srcSet={imageSrcBuilder(image.urls.raw).srcSet}
-                />
-                <Typography
-                  text={"image.name"}
-                  type="body"
-                  customContainerStyles={styles.captionWrapper}
-                />
-              </button>
-            ))}
+          {mockProjects.map((project) => (
+            <button
+              key={project.id}
+              className={styles.picture}
+              onClick={() => handleSelectProject("image.name")}
+            >
+              <ResponsiveLazyImage
+                height="100%"
+                width="100%"
+                placeholderSrc={project.thumbImage.placeholderSrc}
+                src={project.thumbImage.src}
+              />
+              <Typography
+                text={"image.name"}
+                type="body"
+                customContainerStyles={styles.captionWrapper}
+              />
+            </button>
+          ))}
         </div>
       </div>
       <div className={styles.bottomVideoWrapper}>
@@ -82,8 +79,7 @@ export const Projects = () => {
       </div>
 
       <Modal ref={modalRef}>
-        {/**TODO: substituir MOCK_IMAGES e hasFinished */}
-        <Carousel images={MOCK_IMAGES} hasFinished={false} />
+        <Carousel images={MOCK_IMAGES} />
       </Modal>
     </>
   );

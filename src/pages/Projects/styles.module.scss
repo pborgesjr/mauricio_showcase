@@ -38,7 +38,7 @@
   position: relative;
   cursor: pointer;
 
-  &:hover:enabled {
+  &:hover {
     img {
       filter: brightness(20%);
     }
@@ -51,19 +51,6 @@
   @media screen and (min-width: 1366px) {
     flex: 0 1 392px;
   }
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: 16/9;
-  /*   opacity: 0; */
-  -webkit-transition: opacity 2s ease;
-  -moz-transition: opacity 2s ease;
-  -ms-transition: opacity 2s ease;
-  -o-transition: opacity 2s ease;
 }
 
 .captionWrapper {

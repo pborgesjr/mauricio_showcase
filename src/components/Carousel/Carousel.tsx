@@ -1,20 +1,17 @@
-import React, { ImgHTMLAttributes } from "react";
+import React from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Carousel as RRCarousel } from "react-responsive-carousel";
 
 import styles from "./styles.module.scss";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import { ResponsiveLazyImage } from "../ResponsiveLazyImage/ResponsiveLazyImage";
-import { imageSrcBuilder } from "../../utils";
 
-interface ResponsiveLazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  blurHash: string;
-}
-//TODO: passar para types
-
+type ImageType = {
+  src?: string;
+  placeholderSrc?: string;
+};
 interface CarouselProps {
-  images?: ResponsiveLazyImageProps[];
-  hasFinished: boolean;
+  images?: ImageType[];
   infiniteLoop?: boolean;
   autoPlay?: boolean;
   showArrows?: boolean;
@@ -25,7 +22,6 @@ interface CarouselProps {
 
 export const Carousel = ({
   images,
-  hasFinished,
   infiniteLoop,
   autoPlay,
   showArrows = true,
@@ -74,18 +70,11 @@ export const Carousel = ({
     >
       {images &&
         images.map((item, index) => (
-          <div
-            className={`${styles.imageWrapper} ${
-              fullWidth && styles.fullWidth
-            }`}
+          <ResponsiveLazyImage
+            {...item}
+            className={`${fullWidth && styles.fullWidth}`}
             key={index}
-          >
-            <ResponsiveLazyImage
-              {...imageSrcBuilder(item.src)}
-              {...item}
-              hasFinished={hasFinished}
-            />
-          </div>
+          />
         ))}
     </RRCarousel>
   );
