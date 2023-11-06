@@ -1,19 +1,31 @@
-import { About, Contact, Projects } from "../pages";
+import { lazy } from "react";
 
 export const routes = [
   {
     path: "/",
     name: "Projetos",
-    component: <Projects />,
+    Component: lazy(() =>
+      import("../pages/Projects/Projects").then((module) => ({
+        default: module.Projects,
+      }))
+    ),
   },
   {
     path: "/sobre",
     name: "Sobre",
-    component: <About />,
+    Component: lazy(() =>
+      import("../pages/About/About").then((module) => ({
+        default: module.About,
+      }))
+    ),
   },
   {
     path: "/contato",
     name: "Contato",
-    component: <Contact />,
+    Component: lazy(() =>
+      import("../pages/Contact/Contact").then((module) => ({
+        default: module.Contact,
+      }))
+    ),
   },
 ];
