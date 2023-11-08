@@ -19,6 +19,7 @@ export const Projects = () => {
 
   const handleSelectProject = async (path: string) => {
     /* setSelectedProject(path); */
+    //@ts-ignore
     modalRef?.current?.openModal();
   };
 
