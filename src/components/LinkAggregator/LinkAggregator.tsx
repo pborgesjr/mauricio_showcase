@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { LinkType } from "../../constants";
+import { LinkType } from "../../types";
 
 import styles from "./styles.module.scss";
 

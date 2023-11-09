@@ -60,11 +60,12 @@ export const Carousel = ({
       showArrows={showArrows}
       interval={interval}
       transitionTime={transitionTime}
-      showIndicators={false}
+      showIndicators
       showThumbs={false}
       showStatus={false}
+      useKeyboardArrows
       className={styles.container}
-      swipeable={false}
+      emulateTouch
       renderArrowPrev={renderPrevArrow}
       renderArrowNext={renderNextArrow}
     >

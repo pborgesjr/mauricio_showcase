@@ -38,4 +38,8 @@
     cursor: pointer;
     transform: scale(1.15);
   }
+
+  svg {
+    color: colors.$white100;
+  }
 }

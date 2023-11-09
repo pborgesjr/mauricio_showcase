@@ -11,20 +11,23 @@ import styles from "./styles.module.scss";
 import { ContactDataResponse } from "../../types";
 
 export const Contact = () => {
+  //TODO: passar variaveis para .env
   const {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
-  const { data, isFetching, isFetched, isLoading } =
-    useGetQuery<ContactDataResponse>({
-      queryKey: ["contact"],
-      url: "/contact",
-    });
+  const { data, isFetching, isFetched } = useGetQuery<ContactDataResponse>({
+    queryKey: ["contact"],
+    url: "/contact",
+  });
 
   return (
     <>
       <div className={styles.imageWrapper}>
-        <ResponsiveLazyImage />
+        <ResponsiveLazyImage
+          src={data?.[0].url}
+          placeholderSrc={data?.[0].placeholder}
+        />
       </div>
 
       <div className="bleedSideways">

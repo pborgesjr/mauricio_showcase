@@ -26,7 +26,7 @@ export const Modal = forwardRef(({ children }: ModalProps, ref) => {
           onClick={() => toggleVisibility(false)}
           className={styles.closeButton}
         >
-          <IoIosClose />
+          <IoIosClose id="close-icon" />
         </button>
 
         {children}

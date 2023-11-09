@@ -1,24 +1,29 @@
 import React from "react";
-import { Carousel, ResponsiveLazyImage } from "../../components";
-import { useCustomGetQuery } from "../../hooks";
-import { MOCK_IMAGES } from "../../utils";
-import { mockImage, mockImageBlur } from "../../assets";
+import { ResponsiveLazyImage } from "../../components";
+import { useGetQuery } from "../../hooks";
 
 import styles from "./styles.module.scss";
+import { AboutDataResponse } from "../../types";
 
 export const About = () => {
-  const { data, isFetching, isFetched } = useCustomGetQuery({
-    queryKey: "random",
+  const { data, isFetching, isFetched } = useGetQuery<AboutDataResponse>({
+    queryKey: ["about"],
+    url: "/about",
   });
+
+  const mainImage = data?.filter((img) => img.id === "main");
+  const profileImages = data?.filter((img) => img.id !== "main");
 
   return (
     <>
       <div className={styles.carouselWrapper}>
-        <ResponsiveLazyImage
-          id={"0"}
-          src={mockImage}
-          placeholderSrc={mockImageBlur}
-        />
+        <div className={styles.imageWrapper}>
+          <ResponsiveLazyImage
+            src={mainImage?.[0].url}
+            placeholderSrc={mainImage?.[0].placeholder}
+            id={mainImage?.[0].id}
+          />
+        </div>
       </div>
       <div className="bleedSideways">
         <div className={styles.wrapper}>
@@ -29,8 +34,8 @@ export const About = () => {
                   id={"0"}
                   width={345}
                   height={400}
-                  src={mockImage}
-                  placeholderSrc={mockImageBlur}
+                  src={profileImages?.[0].url}
+                  placeholderSrc={profileImages?.[0].placeholder}
                   className={styles.image}
                 />
               </div>
@@ -65,8 +70,8 @@ export const About = () => {
                   id={"1"}
                   width={345}
                   height={400}
-                  src={mockImage}
-                  placeholderSrc={mockImageBlur}
+                  src={profileImages?.[1].url}
+                  placeholderSrc={profileImages?.[1].placeholder}
                   className={styles.image}
                 />
               </div>
