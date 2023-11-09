@@ -4,19 +4,22 @@ import { MdOutlineMail } from "react-icons/md";
 
 import { ResponsiveLazyImage, Typography } from "../../components";
 import { instagramLink, whatsAppLink } from "../../constants";
-import { useCustomGetQuery } from "../../hooks";
+import { useGetQuery } from "../../hooks";
 import { getLocale } from "../../locale";
 
 import styles from "./styles.module.scss";
+import { ContactDataResponse } from "../../types";
 
 export const Contact = () => {
   const {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
-  const { data, isFetching, isFetched } = useCustomGetQuery({
-    queryKey: "random",
-  });
+  const { data, isFetching, isFetched, isLoading } =
+    useGetQuery<ContactDataResponse>({
+      queryKey: ["contact"],
+      url: "/contact",
+    });
 
   return (
     <>

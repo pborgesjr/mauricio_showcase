@@ -1,24 +1,26 @@
-import { useQuery } from "react-query";
+import { QueryKey, useQuery } from "@tanstack/react-query";
 import { apiClient } from "../services";
-
-const STALE_TIME = 2000 * 60; // 2 minutes
+import { STALE_TIME } from "../constants";
 
 type CustomQueryParamsType = {
-  queryKey: string;
+  queryKey: QueryKey;
   baseURL?: string;
   url?: string;
   enabled?: boolean;
 };
 
-//TODO: replace queryKey default value
-export const useCustomGetQuery = ({
-  queryKey = "random",
+export const useGetQuery = <T>({
+  queryKey,
   baseURL,
   url = "",
   enabled = true,
-}: CustomQueryParamsType) => {
-  return useQuery(queryKey, () => apiClient(baseURL).get(url), {
+}: CustomQueryParamsType) =>
+  useQuery({
+    queryKey,
     enabled,
     staleTime: STALE_TIME,
+    queryFn: () =>
+      apiClient(baseURL)
+        .get(url)
+        .then((res) => res.data as T),
   });
-};
