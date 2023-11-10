@@ -6,12 +6,11 @@
 
   margin-bottom: metrics.$space_43 * -1;
 
+  margin-right: metrics.$space_83;
+
   @media (max-width: 768px) {
     margin-left: 0;
-  }
-
-  @media (min-width: 1367px) {
-    margin-right: metrics.$space_83;
+    margin-right: 0;
   }
 }
 
@@ -22,11 +21,13 @@
 .imageList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: metrics.$space_5;
-  padding: metrics.$space_48 metrics.$space_83;
+  padding: 68px metrics.$space_83;
 
   @media screen and (max-width: 768px) {
-    padding: metrics.$space_48 0;
+    padding: 68px 0;
+    gap: 20px;
   }
 }
 
@@ -37,13 +38,25 @@
   position: relative;
   cursor: pointer;
 
-  &:hover {
+  @media (max-width: 768px) {
     img {
-      filter: brightness(20%);
+      filter: brightness(30%);
     }
 
     div {
       display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      img {
+        filter: brightness(20%);
+      }
+
+      div {
+        display: block;
+      }
     }
   }
 
