@@ -1,0 +1,45 @@
+@use "../../styles/_colors.scss" as colors;
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 10;
+  background: colors.$blackOpacity90;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  svg {
+    color: colors.$whiteOpacity50;
+    font-size: 5rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  border: none;
+  background-color: colors.$transparent;
+  transition: transform ease 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+  }
+
+  svg {
+    color: colors.$white100;
+  }
+}

@@ -1,24 +1,50 @@
 @use "../../styles/_colors.scss" as colors;
 
-.container {
+$DEFAULT_HORIZONTAL_PADDING: 90px;
+
+header {
   display: flex;
-  justify-content: center;
-
-  .wrapper {
-    display: flex;
-    flex-basis: 70rem;
-    align-items: center;
-    gap: 15rem;
-
-    @media screen and (max-width: 800px) {
-      justify-content: space-between;
-      padding: 0 1rem;
-      gap: 0;
-    }
-  }
+  align-items: center;
+  padding: 70px $DEFAULT_HORIZONTAL_PADDING 60px;
 
   img {
-    max-width: 7rem;
+    max-width: 3.5rem;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    padding: 50px 30px;
+  }
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: colors.$black80;
+
+  > div {
+    flex-direction: column;
   }
 }
 
@@ -29,41 +55,18 @@
 
   svg {
     color: colors.$white100;
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 768px) {
     display: block;
-  }
-}
-
-.links {
-  @media screen and (max-width: 800px) {
-    display: none;
+    align-self: flex-end;
   }
 }
 
 .closeButton {
-  padding-bottom: 3rem;
-}
-
-.mobileLinks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-
-  width: 100vw;
-  height: 100vh;
-
-  background-color: colors.$blackOpacity98;
-
-  > div {
-    flex-direction: column;
+  svg {
+    color: colors.$white100;
+    font-size: 3rem;
   }
 }

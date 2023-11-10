@@ -1,47 +1,52 @@
 import React, { useState } from "react";
 import { LinkAggregator } from "..";
-import { IoMdReorder, IoIosClose } from "react-icons/io";
-import { LinkType } from "../../constants";
+import { IoIosClose } from "react-icons/io";
+import { MdOutlineMenu } from "react-icons/md";
 
 import styles from "./styles.module.scss";
 import { app_logo } from "../../assets";
+import { LinkAggregatorProps } from "../LinkAggregator/LinkAggregator";
+import { getLocale } from "../../locale";
 
-interface HeaderProps {
-  links: Array<LinkType>;
-}
+interface HeaderProps extends LinkAggregatorProps {}
 
-export const Header = ({ links }: HeaderProps) => {
+export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
+  const { brand } = getLocale();
   const [isMobileMenu, setIsMobileMenu] = useState(false);
 
   const handleToggleMenu = () => {
     setIsMobileMenu((prevState) => !prevState);
   };
 
+  const handleCallback = () => {
+    if (isMobileMenu) {
+      handleToggleMenu();
+    }
+    callback?.();
+  };
+
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <img src={app_logo} />
+    <header>
+      <img src={app_logo} alt={`${brand.name} ${brand.brand}`} />
 
-        <div
-          className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}
+      <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
+        <button
+          onClick={handleToggleMenu}
+          className={`${styles.button} ${styles.closeButton}`}
         >
-          <button
-            onClick={handleToggleMenu}
-            className={`${styles.button} ${isMobileMenu && styles.closeButton}`}
-          >
-            <IoIosClose />
-          </button>
-
-          <LinkAggregator
-            links={links}
-            callback={isMobileMenu ? handleToggleMenu : undefined}
-          />
-        </div>
-
-        <button onClick={handleToggleMenu} className={`${styles.button}`}>
-          <IoMdReorder />
+          <IoIosClose />
         </button>
+
+        <LinkAggregator
+          links={links}
+          shouldUnderline={shouldUnderline}
+          callback={handleCallback}
+        />
       </div>
-    </div>
+
+      <button onClick={handleToggleMenu} className={`${styles.button}`}>
+        <MdOutlineMenu />
+      </button>
+    </header>
   );
 };

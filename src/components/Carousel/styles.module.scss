@@ -1,0 +1,41 @@
+@use "../../styles/_colors.scss" as colors;
+
+.container {
+  position: relative;
+
+  button {
+    border: none;
+    background-color: transparent;
+
+    &:disabled {
+      opacity: 0;
+    }
+  }
+}
+
+.imageWrapper {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.fullWidth {
+  max-width: 100%;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 0;
+  height: 100%;
+
+  &:hover:enabled {
+    cursor: pointer;
+  }
+}
+
+.prevButton {
+  z-index: 5;
+  left: 0;
+}
+.nextButton {
+  right: 0;
+}

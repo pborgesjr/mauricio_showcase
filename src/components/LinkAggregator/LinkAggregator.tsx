@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { LinkType } from "../../constants";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { LinkType } from "../../types";
 
 import styles from "./styles.module.scss";
 
-interface LinkAggregatorProps {
+export interface LinkAggregatorProps {
   links: Array<LinkType>;
   callback?: VoidFunction;
   shouldUnderline?: boolean;
@@ -14,15 +15,23 @@ export const LinkAggregator = ({
   callback,
   shouldUnderline,
 }: LinkAggregatorProps) => {
-  const [activeItem, setActiveItem] = useState("home");
+  const [activeItem, setActiveItem] = useState<string>();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  const handleSetActiveItem = ({ path, ref }: LinkType) => {
+  const handleSetActiveItem = (link: LinkType) => {
     if (shouldUnderline) {
-      setActiveItem(path);
+      setActiveItem(link.path);
     }
+    //TODO: create not found page error
+    navigate(link?.path || "/");
+
     callback?.();
-    ref?.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    setActiveItem(pathname);
+  }, [pathname]);
 
   return (
     <div className={styles.container}>
@@ -32,7 +41,7 @@ export const LinkAggregator = ({
           onClick={() => handleSetActiveItem(link)}
           className={styles.button}
         >
-          <span className={`${styles.text}`}>{link.path}</span>
+          <span className={`${styles.text}`}>{link.name}</span>
           <div
             className={`${
               activeItem === link.path && shouldUnderline && styles.active

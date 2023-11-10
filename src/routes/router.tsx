@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
+import { DefaultLayout } from "../components";
 import { routes } from "./routes";
 
 export const Router = () => {
@@ -7,7 +8,11 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         {routes.map((route) => (
-          <Route key={route.name} path={route.path} element={route.component} />
+          <Route
+            key={route.name}
+            path={route.path}
+            element={<DefaultLayout>{route.component}</DefaultLayout>}
+          />
         ))}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

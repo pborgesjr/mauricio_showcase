@@ -1,0 +1,74 @@
+@use "../../styles/_colors.scss" as colors;
+@use "../../styles/_metrics.scss" as metrics;
+
+.topVideoWrapper {
+  margin-left: metrics.$space_83;
+
+  margin-bottom: metrics.$space_43 * -1;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+
+  @media (min-width: 1367px) {
+    margin-right: metrics.$space_83;
+  }
+}
+
+.frozenPlayer {
+  pointer-events: none;
+}
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: metrics.$space_5;
+  padding: metrics.$space_48 metrics.$space_83;
+
+  @media screen and (max-width: 768px) {
+    padding: metrics.$space_48 0;
+  }
+}
+
+.picture {
+  flex: 1 1 392px;
+  border: none;
+  background-color: colors.$transparent;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      filter: brightness(20%);
+    }
+
+    div {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 1366px) {
+    flex: 0 1 392px;
+  }
+}
+
+.captionWrapper {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  span {
+    color: colors.$white100;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+  }
+}
+
+.bottomVideoWrapper {
+  margin: metrics.$space_43 * -1 metrics.$space_83 0;
+
+  @media screen and (max-width: 768px) {
+    margin: metrics.$space_43 * -1 0 0;
+  }
+}

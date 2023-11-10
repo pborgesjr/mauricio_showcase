@@ -1,11 +1,6 @@
-import app_logo from './images/app_logo.png';
-import big_image from './images/big_image.jpg';
-import mauricio_face from './images/profile.jpg';
-import bedroom from './images/bedroom.jpg';
-import fake_player from './images/fake_player.jpg';
-import area_gourmet from './images/area_gourmet.webp';
-import fachada_casa from './images/fachada_casa.png'
-import fachada_casa_2 from './images/fachada_casa_2.jpg'
-import sala from './images/sala.jpg'
+import app_logo from "./images/app_logo.png";
+import mockImage from "./images/mock.jpg";
+import mockImageBlur from "./images/mock-blur.jpg";
+import contact from "./images/contact.jpg";
 
-export { app_logo, big_image, mauricio_face, bedroom, fake_player, area_gourmet, fachada_casa, fachada_casa_2, sala };
+export { contact, app_logo, mockImage, mockImageBlur };

@@ -1,0 +1,54 @@
+@use "../../styles/_colors.scss" as colors;
+@use "../../styles/_metrics.scss" as metrics;
+
+.imageWrapper {
+  position: relative;
+  z-index: 5;
+  margin-left: metrics.$space_83;
+  margin-bottom: metrics.$space_43 * -1;
+  aspect-ratio: 16/9;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: -4px;
+  }
+}
+
+.title {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+}
+
+.body {
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 50px;
+
+  padding: 200px 0 130px 170px;
+
+  svg {
+    color: colors.$black100;
+    font-size: 1.8rem;
+  }
+
+  span {
+    color: colors.$black100;
+  }
+
+  @media (max-width: 768px) {
+    padding: 70px 30px;
+  }
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
