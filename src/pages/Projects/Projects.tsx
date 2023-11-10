@@ -9,23 +9,25 @@ import {
 } from "../../components";
 
 import styles from "./styles.module.scss";
-import { addClassName, imageSrcBuilder, MOCK_IMAGES } from "../../utils";
-import { useCustomGetQuery } from "../../hooks";
-import { mockProjects } from "../../utils/mockProjects";
+import { useGetQuery } from "../../hooks";
+import { ImageType, ProjectResponseDataType } from "../../types";
 
 export const Projects = () => {
   const modalRef = useRef(null);
-  const [selectedProject, setSelectedProject] = useState<string>("none");
+  const [selectedProject, setSelectedProject] = useState<ImageType[]>([]);
 
-  const handleSelectProject = async (path: string) => {
-    /* setSelectedProject(path); */
+  const handleSelectProject = async (projectImages?: ImageType[]) => {
+    if (projectImages) {
+      setSelectedProject(projectImages);
+    }
+
     //@ts-ignore
     modalRef?.current?.openModal();
   };
 
-  const { data, isFetching, isFetched, isSuccess } = useCustomGetQuery({
-    queryKey: "random",
-    baseURL: "http://localhost:3333/images",
+  const { data: allProjects } = useGetQuery<Array<ProjectResponseDataType>>({
+    queryKey: ["projects"],
+    url: "/projects",
   });
 
   return (
@@ -46,25 +48,31 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {mockProjects.map((project) => (
-            <button
-              key={project.id}
-              className={styles.picture}
-              onClick={() => handleSelectProject("image.name")}
-            >
-              <ResponsiveLazyImage
-                height="100%"
-                width="100%"
-                placeholderSrc={project.thumbImage.placeholderSrc}
-                src={project.thumbImage.src}
-              />
-              <Typography
-                text={"image.name"}
-                type="body"
-                customContainerStyles={styles.captionWrapper}
-              />
-            </button>
-          ))}
+          {allProjects?.map((project) => {
+            return project.isVisible ? (
+              <button
+                key={project.id}
+                className={styles.picture}
+                onClick={() => handleSelectProject(project.images)}
+              >
+                <ResponsiveLazyImage
+                  height="100%"
+                  width="100%"
+                  placeholderSrc={project.images?.[0].placeholder}
+                  src={project.images?.[0].url}
+                  className={styles.imgHover}
+                />
+
+                <Typography
+                  text={project.name}
+                  type="body"
+                  customContainerStyles={styles.captionWrapper}
+                />
+              </button>
+            ) : (
+              <></>
+            );
+          })}
         </div>
       </div>
       <div className={styles.bottomVideoWrapper}>
@@ -80,7 +88,7 @@ export const Projects = () => {
       </div>
 
       <Modal ref={modalRef}>
-        <Carousel images={MOCK_IMAGES} />
+        <Carousel images={selectedProject} />
       </Modal>
     </>
   );

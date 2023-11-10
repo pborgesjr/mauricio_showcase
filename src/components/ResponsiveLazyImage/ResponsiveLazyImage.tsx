@@ -1,11 +1,14 @@
-import React, { ImgHTMLAttributes, useState } from "react";
+import React, { ImgHTMLAttributes } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { mockImage, mockImageBlur } from "../../assets";
 
 import styles from "./styles.module.scss";
 
 interface ResponsiveLazyImageProps
-  extends Omit<ImgHTMLAttributes<HTMLImageElement>, "placeholder" | "src"> {
+  extends Omit<
+    ImgHTMLAttributes<HTMLImageElement>,
+    "placeholder" | "src" | "onLoad"
+  > {
   src?: string;
   placeholderSrc?: string;
 }

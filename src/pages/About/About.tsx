@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import { AboutDataResponse } from "../../types";
 
 export const About = () => {
-  const { data, isFetching, isFetched } = useGetQuery<AboutDataResponse>({
+  const { data } = useGetQuery<AboutDataResponse>({
     queryKey: ["about"],
     url: "/about",
   });
@@ -32,9 +32,8 @@ export const About = () => {
               <div className={styles.rightImage}>
                 <ResponsiveLazyImage
                   id={"0"}
-                  width={345}
-                  height={400}
                   src={profileImages?.[0].url}
+                  /*  src={profileImages?.[0].url} */
                   placeholderSrc={profileImages?.[0].placeholder}
                   className={styles.image}
                 />
@@ -68,8 +67,6 @@ export const About = () => {
               <div className={styles.leftImage}>
                 <ResponsiveLazyImage
                   id={"1"}
-                  width={345}
-                  height={400}
                   src={profileImages?.[1].url}
                   placeholderSrc={profileImages?.[1].placeholder}
                   className={styles.image}

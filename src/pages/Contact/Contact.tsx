@@ -16,7 +16,7 @@ export const Contact = () => {
     brand: { email, name, phoneNumber, instagramId },
   } = getLocale();
 
-  const { data, isFetching, isFetched } = useGetQuery<ContactDataResponse>({
+  const { data } = useGetQuery<ContactDataResponse>({
     queryKey: ["contact"],
     url: "/contact",
   });

@@ -22,7 +22,6 @@
 .imageList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: metrics.$space_5;
   padding: metrics.$space_48 metrics.$space_83;
 
@@ -72,8 +71,4 @@
   @media screen and (max-width: 768px) {
     margin: metrics.$space_43 * -1 0 0;
   }
-}
-
-.easeLoad {
-  opacity: 1;
 }

@@ -5,13 +5,10 @@ import { Carousel as RRCarousel } from "react-responsive-carousel";
 import styles from "./styles.module.scss";
 
 import { ResponsiveLazyImage } from "../ResponsiveLazyImage/ResponsiveLazyImage";
+import { ImageType } from "../../types";
 
-type ImageType = {
-  src?: string;
-  placeholderSrc?: string;
-};
 interface CarouselProps {
-  images?: ImageType[];
+  images: ImageType[];
   infiniteLoop?: boolean;
   autoPlay?: boolean;
   showArrows?: boolean;
@@ -72,7 +69,9 @@ export const Carousel = ({
       {images &&
         images.map((item, index) => (
           <ResponsiveLazyImage
-            {...item}
+            id={item.id}
+            src={item.url}
+            placeholderSrc={item.placeholder}
             className={`${fullWidth && styles.fullWidth}`}
             key={index}
           />

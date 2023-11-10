@@ -19,6 +19,7 @@ export const useGetQuery = <T>({
     queryKey,
     enabled,
     staleTime: STALE_TIME,
+    refetchOnWindowFocus: false,
     queryFn: () =>
       apiClient(baseURL)
         .get(url)

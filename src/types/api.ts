@@ -12,7 +12,6 @@ export type ProjectResponseDataType = {
   id: string;
   name: string;
   isVisible?: boolean;
-  thumbnail?: ImageType;
   description?: string;
   images?: Array<ImageType>;
 };
