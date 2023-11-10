@@ -48,31 +48,27 @@ export const Projects = () => {
 
       <div className="bleedSideways">
         <div className={styles.imageList}>
-          {allProjects?.map((project) => {
-            return project.isVisible ? (
-              <button
-                key={project.id}
-                className={styles.picture}
-                onClick={() => handleSelectProject(project.images)}
-              >
-                <ResponsiveLazyImage
-                  height="100%"
-                  width="100%"
-                  placeholderSrc={project.images?.[0].placeholder}
-                  src={project.images?.[0].url}
-                  className={styles.imgHover}
-                />
+          {allProjects?.map((project) => (
+            <button
+              key={project.id}
+              className={styles.picture}
+              onClick={() => handleSelectProject(project.images)}
+            >
+              <ResponsiveLazyImage
+                height="100%"
+                width="100%"
+                placeholderSrc={project.images?.[0].placeholder}
+                src={project.images?.[0].url}
+                className={styles.imgHover}
+              />
 
-                <Typography
-                  text={project.name}
-                  type="body"
-                  customContainerStyles={styles.captionWrapper}
-                />
-              </button>
-            ) : (
-              <></>
-            );
-          })}
+              <Typography
+                text={project.name}
+                type="body"
+                customContainerStyles={styles.captionWrapper}
+              />
+            </button>
+          ))}
         </div>
       </div>
       <div className={styles.bottomVideoWrapper}>
