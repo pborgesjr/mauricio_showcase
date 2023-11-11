@@ -3,19 +3,19 @@ import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
 import { ResponsiveLazyImage, Typography } from "../../components";
-import { instagramLink, whatsAppLink } from "../../constants";
 import { useGetQuery } from "../../hooks";
-import { getLocale } from "../../locale";
 
 import styles from "./styles.module.scss";
 import { ContactDataResponse } from "../../types";
 
-export const Contact = () => {
-  //TODO: passar variaveis para .env
-  const {
-    brand: { email, name, phoneNumber, instagramId },
-  } = getLocale();
+const NAME = import.meta.env.VITE_CONTACT_NAME;
+const EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
+const WHATSAPP_LINK = import.meta.env.VITE_WHATSAPP_LINK;
+const PHONENUMBER_LINK = import.meta.env.VITE_CONTACT_PHONENUMBER;
+const INSTAGRAM_LINK = import.meta.env.VITE_INSTAGRAM_LINK;
+const INSTAGRAM_ID = import.meta.env.VITE_CONTACT_INSTAGRAM_ID;
 
+export const Contact = () => {
   const { data } = useGetQuery<ContactDataResponse>({
     queryKey: ["contact"],
     url: "/contact",
@@ -32,30 +32,30 @@ export const Contact = () => {
 
       <div className="bleedSideways">
         <div className={styles.itemsContainer}>
-          <Typography text={name} type="body" customStyles={styles.title} />
+          <Typography text={NAME} type="body" customStyles={styles.title} />
           <div className={styles.contactItem}>
             <MdOutlineMail />
-            <Typography type="body" text={email} customStyles={styles.body} />
+            <Typography type="body" text={EMAIL} customStyles={styles.body} />
           </div>
 
           <div className={styles.contactItem}>
-            <a href={whatsAppLink} rel="external" target="_blank">
+            <a href={WHATSAPP_LINK} rel="external" target="_blank">
               <FaWhatsapp />
             </a>
             <Typography
               type="body"
-              text={phoneNumber}
+              text={PHONENUMBER_LINK}
               customStyles={styles.body}
             />
           </div>
 
           <div className={styles.contactItem}>
-            <a href={instagramLink} rel="external" target="_blank">
+            <a href={INSTAGRAM_LINK} rel="external" target="_blank">
               <FaInstagram />
             </a>
             <Typography
               type="body"
-              text={instagramId}
+              text={INSTAGRAM_ID}
               customStyles={styles.body}
             />
           </div>

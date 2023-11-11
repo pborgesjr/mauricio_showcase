@@ -12,6 +12,9 @@ import styles from "./styles.module.scss";
 import { useGetQuery } from "../../hooks";
 import { ImageType, ProjectResponseDataType } from "../../types";
 
+const TOP_VIDEO_LINK = import.meta.env.VITE_TOP_VIDEO_LINK;
+const BOTTOM_VIDEO_LINK = import.meta.env.VITE_BOTTOM_VIDEO_LINK;
+
 export const Projects = () => {
   const modalRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState<ImageType[]>([]);
@@ -34,7 +37,7 @@ export const Projects = () => {
     <>
       <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
-          url="https://vimeo.com/883433242"
+          url={TOP_VIDEO_LINK}
           muted
           playing={true}
           controls={false}
@@ -73,7 +76,7 @@ export const Projects = () => {
       </div>
       <div className={styles.bottomVideoWrapper}>
         <ResponsiveVideoPlayer
-          url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
+          url={BOTTOM_VIDEO_LINK}
           muted
           width={1280}
           height={720}

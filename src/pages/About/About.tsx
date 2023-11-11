@@ -1,10 +1,16 @@
 import React from "react";
 import { ResponsiveLazyImage } from "../../components";
 import { useGetQuery } from "../../hooks";
-
 import styles from "./styles.module.scss";
 import { AboutDataResponse } from "../../types";
-import { mockImage, mockImageBlur } from "../../assets";
+
+const FIRST_TITLE = import.meta.env.VITE_FIRST_TITLE;
+const FIRST_SUBTITLE = import.meta.env.VITE_FIRST_SUBTITLE;
+const FIRST_DESCRIPTION = import.meta.env.VITE_FIRST_DESCRIPTION;
+
+const SECOND_TITLE = import.meta.env.VITE_SECOND_TITLE;
+const SECOND_SUBTITLE = import.meta.env.VITE_SECOND_SUBTITLE;
+const SECOND_DESCRIPTION = import.meta.env.VITE_SECOND_DESCRIPTION;
 
 export const About = () => {
   const { data } = useGetQuery<AboutDataResponse>({
@@ -20,8 +26,6 @@ export const About = () => {
       <div className={styles.carouselWrapper}>
         <div className={styles.imageWrapper}>
           <ResponsiveLazyImage
-            /*          src={mockImage}
-            placeholderSrc={mockImageBlur} */
             src={mainImage?.[0].url}
             placeholderSrc={mainImage?.[0].placeholder}
             id={mainImage?.[0].id}
@@ -37,32 +41,18 @@ export const About = () => {
                   id={"0"}
                   src={profileImages?.[0].url}
                   placeholderSrc={profileImages?.[0].placeholder}
-                  /* src={mockImage}
-                  placeholderSrc={mockImageBlur} */
                   className={styles.image}
                 />
               </div>
               <div>
-                <h1>Maurício Alves</h1>
+                <h1>{FIRST_TITLE}</h1>
                 <div className={styles.brand}>
-                  <h1>Archviz</h1>
+                  <h1>{FIRST_SUBTITLE}</h1>
                   <div />
                 </div>
               </div>
 
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud
-                exerci tation ullamcorper suscipit lobortis nisl ut aliquip.
-              </p>
-              <p>
-                Ex ea commodo consequat. Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet dolore. Ex ea commodo consequat. Lorem
-                ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                nonummy nibh euismod tincidunt ut laoreet dolore.
-              </p>
+              <p>{FIRST_DESCRIPTION}</p>
             </article>
           </div>
 
@@ -73,32 +63,18 @@ export const About = () => {
                   id={"1"}
                   src={profileImages?.[1].url}
                   placeholderSrc={profileImages?.[1].placeholder}
-                  /* src={mockImage}
-                  placeholderSrc={mockImageBlur}*/
                   className={styles.image}
                 />
               </div>
               <div>
-                <h1>Lorem ipsum</h1>
+                <h1>{SECOND_TITLE}</h1>
                 <div className={styles.brand}>
-                  <h1>dolor</h1>
+                  <h1>{SECOND_SUBTITLE}</h1>
                   <div />
                 </div>
               </div>
 
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud
-                exerci tation ullamcorper suscipit lobortis nisl ut aliquip.
-              </p>
-              <p>
-                Ex ea commodo consequat. Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet dolore. Ex ea commodo consequat. Lorem
-                ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                nonummy nibh euismod tincidunt.
-              </p>
+              <p>{SECOND_DESCRIPTION}</p>
             </article>
           </div>
         </div>

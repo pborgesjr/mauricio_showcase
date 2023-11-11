@@ -23,7 +23,6 @@ export const LinkAggregator = ({
     if (shouldUnderline) {
       setActiveItem(link.path);
     }
-    //TODO: create not found page error
     navigate(link?.path || "/");
 
     callback?.();

@@ -1,21 +1,3 @@
 {
-    "brand": {
-        "name": "Maurício Alves",
-        "brand": "Archviz",
-        "email": "mauricio@email.com",
-        "phoneNumber": "(35) 991689166",
-        "instagramId": "@mauricio.oalves",
-        "url": "maarchviz.com ●  by mauricio alves",
-        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip.\n\n Ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore."
-    },
-    "imageCategory": {
-        "bathroom": "Banheiro",
-        "bedroom": "Quarto",
-        "dining-room": "Sala de Jantar",
-        "house": "Casa",
-        "living-room": "Sala de Estar",
-        "office": "Escritório",
-        "playground": "Área de Lazer",
-        "toilet": "Lavabo"
-    }
+
 }

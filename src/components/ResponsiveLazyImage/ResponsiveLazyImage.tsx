@@ -1,6 +1,5 @@
 import React, { ImgHTMLAttributes } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { mockImage, mockImageBlur } from "../../assets";
 
 import styles from "./styles.module.scss";
 
@@ -19,8 +18,6 @@ export const ResponsiveLazyImage = (props: ResponsiveLazyImageProps) => {
   return (
     <LazyLoadImage
       effect="blur"
-      placeholderSrc={mockImageBlur}
-      src={mockImage}
       className={`${styles.image} ${className}`}
       {...rest}
     />
