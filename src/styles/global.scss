@@ -12,6 +12,7 @@ body {
   margin: 0 auto;
   color: colors.$white90;
   background: colors.$black80;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     @media (max-width: 768px) {
