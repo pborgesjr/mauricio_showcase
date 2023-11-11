@@ -12,6 +12,13 @@ body {
   margin: 0 auto;
   color: colors.$white90;
   background: colors.$black80;
+
+  &::-webkit-scrollbar {
+    @media (max-width: 768px) {
+      width: 0;
+      display: none;
+    }
+  }
 }
 
 .bleedSideways {
@@ -29,8 +36,4 @@ h1,
 span {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
