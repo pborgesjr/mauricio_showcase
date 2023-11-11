@@ -40,6 +40,7 @@
   svg {
     color: colors.$black100;
     font-size: 1.8rem;
+    margin-right: 15px;
   }
 
   span {
@@ -54,6 +55,14 @@
 .contactItem {
   display: flex;
   align-items: center;
+}
 
-  gap: 15px;
+a {
+  text-decoration: none;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
 }

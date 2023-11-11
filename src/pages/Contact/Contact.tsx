@@ -33,32 +33,34 @@ export const Contact = () => {
       <div className="bleedSideways">
         <div className={styles.itemsContainer}>
           <Typography text={NAME} type="body" customStyles={styles.title} />
-          <div className={styles.contactItem}>
-            <MdOutlineMail />
-            <Typography type="body" text={EMAIL} customStyles={styles.body} />
-          </div>
+          <a href={`mailto:${EMAIL}`} rel="external" target="_blank">
+            <div className={styles.contactItem}>
+              <MdOutlineMail />
+              <Typography type="body" text={EMAIL} customStyles={styles.body} />
+            </div>
+          </a>
 
-          <div className={styles.contactItem}>
-            <a href={WHATSAPP_LINK} rel="external" target="_blank">
+          <a href={WHATSAPP_LINK} rel="external" target="_blank">
+            <div className={styles.contactItem}>
               <FaWhatsapp />
-            </a>
-            <Typography
-              type="body"
-              text={PHONENUMBER_LINK}
-              customStyles={styles.body}
-            />
-          </div>
+              <Typography
+                type="body"
+                text={PHONENUMBER_LINK}
+                customStyles={styles.body}
+              />
+            </div>
+          </a>
 
-          <div className={styles.contactItem}>
-            <a href={INSTAGRAM_LINK} rel="external" target="_blank">
+          <a href={INSTAGRAM_LINK} rel="external" target="_blank">
+            <div className={styles.contactItem}>
               <FaInstagram />
-            </a>
-            <Typography
-              type="body"
-              text={INSTAGRAM_ID}
-              customStyles={styles.body}
-            />
-          </div>
+              <Typography
+                type="body"
+                text={INSTAGRAM_ID}
+                customStyles={styles.body}
+              />
+            </div>
+          </a>
         </div>
       </div>
     </>
