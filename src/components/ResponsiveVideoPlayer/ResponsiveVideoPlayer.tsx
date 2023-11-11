@@ -1,5 +1,5 @@
 import React from "react";
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 import { BaseReactPlayerProps } from "react-player/base";
 
 import styles from "./styles.module.scss";

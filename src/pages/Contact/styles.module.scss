@@ -11,6 +11,11 @@
   @media (max-width: 768px) {
     margin-left: 0;
     margin-bottom: -4px;
+
+    img {
+      object-position: center;
+      height: 480px;
+    }
   }
 }
 
@@ -30,7 +35,7 @@
   flex: 1;
   gap: 50px;
 
-  padding: 200px 0 130px 170px;
+  padding: 150px 0 150px 170px;
 
   svg {
     color: colors.$black100;
@@ -42,7 +47,7 @@
   }
 
   @media (max-width: 768px) {
-    padding: 70px 30px;
+    padding: 30px 30px 60px;
   }
 }
 
