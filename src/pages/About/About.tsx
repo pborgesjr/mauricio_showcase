@@ -4,6 +4,7 @@ import { useGetQuery } from "../../hooks";
 
 import styles from "./styles.module.scss";
 import { AboutDataResponse } from "../../types";
+import { mockImage, mockImageBlur } from "../../assets";
 
 export const About = () => {
   const { data } = useGetQuery<AboutDataResponse>({
@@ -19,6 +20,8 @@ export const About = () => {
       <div className={styles.carouselWrapper}>
         <div className={styles.imageWrapper}>
           <ResponsiveLazyImage
+            /*          src={mockImage}
+            placeholderSrc={mockImageBlur} */
             src={mainImage?.[0].url}
             placeholderSrc={mainImage?.[0].placeholder}
             id={mainImage?.[0].id}
@@ -33,8 +36,9 @@ export const About = () => {
                 <ResponsiveLazyImage
                   id={"0"}
                   src={profileImages?.[0].url}
-                  /*  src={profileImages?.[0].url} */
                   placeholderSrc={profileImages?.[0].placeholder}
+                  /* src={mockImage}
+                  placeholderSrc={mockImageBlur} */
                   className={styles.image}
                 />
               </div>
@@ -69,6 +73,8 @@ export const About = () => {
                   id={"1"}
                   src={profileImages?.[1].url}
                   placeholderSrc={profileImages?.[1].placeholder}
+                  /* src={mockImage}
+                  placeholderSrc={mockImageBlur}*/
                   className={styles.image}
                 />
               </div>

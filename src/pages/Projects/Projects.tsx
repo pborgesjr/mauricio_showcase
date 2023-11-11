@@ -34,7 +34,7 @@ export const Projects = () => {
     <>
       <div className={styles.topVideoWrapper}>
         <ResponsiveVideoPlayer
-          url="https://www.youtube.com/watch?v=pfaM4c3006k&ab_channel=3DigitStudio"
+          url="https://vimeo.com/883433242"
           muted
           playing={true}
           controls={false}
