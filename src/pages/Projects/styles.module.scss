@@ -23,16 +23,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: metrics.$space_5;
-  padding: 68px metrics.$space_83;
+  padding: 4.25rem metrics.$space_83;
 
   @media screen and (max-width: 768px) {
-    padding: 52px 0;
-    gap: 5px;
+    padding: 3.25rem 0;
+    gap: 0.3125rem;
   }
 }
 
 .picture {
-  flex: 1 1 392px;
+  flex: 1 1 24.5rem;
   border: none;
   background-color: colors.$transparent;
   position: relative;
@@ -61,15 +61,15 @@
   }
 
   @media screen and (min-width: 1366px) {
-    flex: 0 1 392px;
+    flex: 0 1 24.5rem;
   }
 }
 
 .captionWrapper {
   display: none;
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 1.875rem;
+  left: 1.875rem;
 
   span {
     color: colors.$white100;

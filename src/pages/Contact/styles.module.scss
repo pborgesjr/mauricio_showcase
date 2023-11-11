@@ -10,11 +10,11 @@
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-bottom: -4px;
+    margin-bottom: -0.25rem;
 
     img {
       object-position: center;
-      height: 480px;
+      height: 30rem;
     }
   }
 }
@@ -33,14 +33,14 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 50px;
+  gap: 3.125rem;
 
-  padding: 150px 0 150px 170px;
+  padding: 9.375rem 0 9.375rem 10.625rem;
 
   svg {
     color: colors.$black100;
     font-size: 1.8rem;
-    margin-right: 15px;
+    margin-right: 0.9375rem;
   }
 
   span {
@@ -48,7 +48,7 @@
   }
 
   @media (max-width: 768px) {
-    padding: 30px 30px 60px;
+    padding: 1.875rem 1.875rem 3.75rem;
   }
 }
 

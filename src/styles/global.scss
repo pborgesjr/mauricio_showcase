@@ -8,7 +8,7 @@
 }
 
 body {
-  max-width: 1366px;
+  max-width: 85.375rem;
   margin: 0 auto;
   color: colors.$white90;
   background: colors.$black80;
@@ -27,7 +27,7 @@ body {
   background-color: colors.$white100;
 
   > div {
-    max-width: 1366px;
+    max-width: 85.375rem;
     margin: 0 auto;
   }
 }

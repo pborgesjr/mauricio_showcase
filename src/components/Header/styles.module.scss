@@ -1,11 +1,11 @@
 @use "../../styles/_colors.scss" as colors;
 
-$DEFAULT_HORIZONTAL_PADDING: 90px;
+$DEFAULT_HORIZONTAL_PADDING: 5.625rem;
 
 header {
   display: flex;
   align-items: center;
-  padding: 70px $DEFAULT_HORIZONTAL_PADDING 60px;
+  padding: 4.375rem $DEFAULT_HORIZONTAL_PADDING 3.75rem;
 
   img {
     max-width: 3.5rem;

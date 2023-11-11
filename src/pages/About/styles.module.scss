@@ -16,7 +16,7 @@
   img {
     @media (max-width: 768px) {
       object-position: center;
-      height: 500px;
+      height: 31.25rem;
     }
   }
 }
@@ -24,17 +24,17 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 6.25rem;
 
-  padding: 150px 170px 120px;
+  padding: 9.375rem 10.625rem 7.5rem;
 
   @media (max-width: 1024px) {
-    padding: 120px 60px;
+    padding: 7.5rem 3.75rem;
   }
 
   @media (max-width: 768px) {
-    padding: 70px 30px;
-    gap: 70px;
+    padding: 4.375rem 1.875rem;
+    gap: 4.375rem;
   }
 }
 
@@ -62,7 +62,7 @@
 
     h1 {
       font-family: "Oswald", sans-serif;
-      letter-spacing: 2px;
+      letter-spacing: 0.125rem;
       font-size: clamp(2rem, 2.5vw, 3rem);
     }
 
@@ -70,7 +70,7 @@
       font-family: "Quicksand", sans-serif;
       font-weight: 400;
       font-size: clamp(1rem, 2vw, 1.3rem);
-      margin-top: 25px;
+      margin-top: 1.5625rem;
     }
 
     @media (max-width: 560px) {
@@ -93,18 +93,18 @@
   @media (min-width: 560px) {
     .rightImage {
       float: right;
-      margin-left: 80px;
+      margin-left: 5rem;
     }
 
     .leftImage {
       float: left;
-      margin-right: 80px;
+      margin-right: 5rem;
     }
   }
 }
 
 .image {
-  max-height: 400px;
+  max-height: 25rem;
   object-fit: center;
   aspect-ratio: 10/16;
 }
@@ -114,19 +114,19 @@
   align-items: center;
 
   h1 {
-    line-height: 35px;
+    line-height: 2.1875rem;
   }
 
   div {
-    width: 50px;
-    margin-top: 12px;
-    border-bottom: 3px solid colors.$black100;
-    border-radius: 4px;
-    margin-left: 12px;
+    width: 3.125rem;
+    margin-top: 0.75rem;
+    border-bottom: 0.1875rem solid colors.$black100;
+    border-radius: 0.25rem;
+    margin-left: 0.75rem;
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
   }
 }
 
