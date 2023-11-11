@@ -10,24 +10,22 @@ import { LinkAggregatorProps } from "../LinkAggregator/LinkAggregator";
 interface HeaderProps extends LinkAggregatorProps {}
 
 export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleMenu = () => {
-    setIsMobileMenu((prevState) => !prevState);
-  };
-
-  const handleCallback = () => {
-    if (isMobileMenu) {
-      handleToggleMenu();
-    }
-    callback?.();
+    setIsOpen((prevState) => !prevState);
   };
 
   return (
     <header>
       <img src={app_logo} />
 
-      <div className={`${styles.links} ${isMobileMenu && styles.mobileLinks}`}>
+      <div
+        className={`${styles.links} ${styles.mobileLinks} ${
+          isOpen ? styles.slideIn : styles.slideOut
+        }
+        }`}
+      >
         <button
           onClick={handleToggleMenu}
           className={`${styles.button} ${styles.closeButton}`}
@@ -38,7 +36,7 @@ export const Header = ({ links, shouldUnderline, callback }: HeaderProps) => {
         <LinkAggregator
           links={links}
           shouldUnderline={shouldUnderline}
-          callback={handleCallback}
+          callback={callback}
         />
       </div>
 

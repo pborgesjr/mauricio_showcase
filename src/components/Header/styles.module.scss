@@ -32,24 +32,36 @@ header {
 }
 
 .mobileLinks {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-
-  width: 100vw;
-  height: 100vh;
-
-  background-color: colors.$black80;
-
-  > div {
+  @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: colors.$black80;
+
+    transition: right 0.5s ease-in-out;
+
+    > div {
+      flex-direction: column;
+    }
   }
+}
+
+.slideIn {
+  right: 0;
+}
+
+.slideOut {
+  right: -100%;
 }
 
 .button {
