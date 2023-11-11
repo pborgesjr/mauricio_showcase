@@ -3,20 +3,17 @@ import { ResponsiveLazyImage } from "../../components";
 import { useGetQuery } from "../../hooks";
 import styles from "./styles.module.scss";
 import { AboutDataResponse } from "../../types";
-
-const FIRST_TITLE = import.meta.env.VITE_FIRST_TITLE;
-const FIRST_SUBTITLE = import.meta.env.VITE_FIRST_SUBTITLE;
-const FIRST_DESCRIPTION = import.meta.env.VITE_FIRST_DESCRIPTION;
-
-const SECOND_TITLE = import.meta.env.VITE_SECOND_TITLE;
-const SECOND_SUBTITLE = import.meta.env.VITE_SECOND_SUBTITLE;
-const SECOND_DESCRIPTION = import.meta.env.VITE_SECOND_DESCRIPTION;
+import { getLocale } from "../../locale";
 
 export const About = () => {
   const { data } = useGetQuery<AboutDataResponse>({
     queryKey: ["about"],
     url: "/about",
   });
+
+  const {
+    about: { bottom, top },
+  } = getLocale();
 
   const mainImage = data?.filter((img) => img.id === "main");
   const profileImages = data?.filter((img) => img.id !== "main");
@@ -45,14 +42,14 @@ export const About = () => {
                 />
               </div>
               <div>
-                <h1>{FIRST_TITLE}</h1>
+                <h1>{top.title}</h1>
                 <div className={styles.brand}>
-                  <h1>{FIRST_SUBTITLE}</h1>
+                  <h1>{top.subtitle}</h1>
                   <div />
                 </div>
               </div>
 
-              <p>{FIRST_DESCRIPTION}</p>
+              <p>{top.description}</p>
             </article>
           </div>
 
@@ -67,14 +64,14 @@ export const About = () => {
                 />
               </div>
               <div>
-                <h1>{SECOND_TITLE}</h1>
+                <h1>{bottom.title}</h1>
                 <div className={styles.brand}>
-                  <h1>{SECOND_SUBTITLE}</h1>
+                  <h1>{bottom.subtitle}</h1>
                   <div />
                 </div>
               </div>
 
-              <p>{SECOND_DESCRIPTION}</p>
+              <p>{bottom.description}</p>
             </article>
           </div>
         </div>

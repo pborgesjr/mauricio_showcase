@@ -7,8 +7,8 @@ import { useGetQuery } from "../../hooks";
 
 import styles from "./styles.module.scss";
 import { ContactDataResponse } from "../../types";
+import { getLocale } from "../../locale";
 
-const NAME = import.meta.env.VITE_CONTACT_NAME;
 const EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
 const WHATSAPP_LINK = import.meta.env.VITE_WHATSAPP_LINK;
 const PHONENUMBER_LINK = import.meta.env.VITE_CONTACT_PHONENUMBER;
@@ -20,6 +20,9 @@ export const Contact = () => {
     queryKey: ["contact"],
     url: "/contact",
   });
+  const {
+    contact: { title },
+  } = getLocale();
 
   return (
     <>
@@ -32,7 +35,7 @@ export const Contact = () => {
 
       <div className="bleedSideways">
         <div className={styles.itemsContainer}>
-          <Typography text={NAME} type="body" customStyles={styles.title} />
+          <Typography text={title} type="body" customStyles={styles.title} />
           <a href={`mailto:${EMAIL}`} rel="external" target="_blank">
             <div className={styles.contactItem}>
               <MdOutlineMail />
