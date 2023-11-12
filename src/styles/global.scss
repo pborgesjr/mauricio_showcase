@@ -1,4 +1,5 @@
 @use "_colors.scss" as colors;
+@use "_breakpoints.scss" as breakpoints;
 
 * {
   padding: 0;
@@ -15,7 +16,7 @@ body {
   overflow-x: hidden;
 
   &::-webkit-scrollbar {
-    @media (max-width: 768px) {
+    @media (max-width: breakpoints.$bp_768) {
       width: 0;
       display: none;
     }

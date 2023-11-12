@@ -1,5 +1,6 @@
 @use "../../styles/_colors.scss" as colors;
 @use "../../styles/_metrics.scss" as metrics;
+@use "../../styles/_breakpoints.scss" as breakpoints;
 
 .imageWrapper {
   position: relative;
@@ -8,7 +9,7 @@
   margin-bottom: metrics.$space_43 * -1;
   aspect-ratio: 16/9;
 
-  @media (max-width: 768px) {
+  @media (max-width: breakpoints.$bp_768) {
     margin-left: 0;
     margin-bottom: -0.25rem;
 
@@ -47,7 +48,7 @@
     color: colors.$black100;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: breakpoints.$bp_768) {
     padding: 1.875rem 1.875rem 3.75rem;
   }
 }

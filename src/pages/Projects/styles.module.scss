@@ -1,5 +1,6 @@
 @use "../../styles/_colors.scss" as colors;
 @use "../../styles/_metrics.scss" as metrics;
+@use "../../styles/_breakpoints.scss" as breakpoints;
 
 .topVideoWrapper {
   margin-left: metrics.$space_83;
@@ -8,7 +9,7 @@
 
   margin-right: metrics.$space_83;
 
-  @media (max-width: 768px) {
+  @media (max-width: breakpoints.$bp_768) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -25,7 +26,7 @@
   gap: metrics.$space_5;
   padding: 4.25rem metrics.$space_83;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: breakpoints.$bp_768) {
     padding: 3.25rem 0;
     gap: 0.3125rem;
   }
@@ -38,7 +39,7 @@
   position: relative;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: breakpoints.$bp_768) {
     img {
       filter: brightness(30%);
     }
@@ -48,7 +49,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: breakpoints.$bp_768) {
     &:hover {
       img {
         filter: brightness(20%);
@@ -60,7 +61,7 @@
     }
   }
 
-  @media screen and (min-width: 1366px) {
+  @media screen and (min-width: breakpoints.$bp_1366) {
     flex: 0 1 24.5rem;
   }
 }
@@ -81,7 +82,7 @@
 .bottomVideoWrapper {
   margin: metrics.$space_43 * -1 metrics.$space_83 0;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: breakpoints.$bp_768) {
     margin: metrics.$space_43 * -1 0 0;
   }
 }
